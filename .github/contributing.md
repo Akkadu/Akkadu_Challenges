@@ -13,7 +13,6 @@ By contributing to this project, you:
 * Agree that the content you contribute may be provided under the Project license(s)
 * Agree that, if you did not author 100% of the content, the appropriate licenses and copyrights have been added along with any other necessary attribution.
 
-
 ## Getting started
 
 **What does "contributing" mean?**
@@ -33,8 +32,6 @@ Please keep in mind that open source software is built by people like you, who s
 Don't have time to contribute? No worries, here are some other ways to show your support for Akkadu_Challenges:
 
 - star the [project](akkadu.github.io/Akkadu_Challenges)
-- tweet your support for Akkadu_Challenges
-
 
 ## Issues
 

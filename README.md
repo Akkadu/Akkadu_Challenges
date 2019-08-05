@@ -5,15 +5,15 @@
 
 > Challenges provided by the Akkadu team for the recruitment of new applicants
 
-### 🏠 [Homepage](akkadu.github.io/Akkadu_Challenges)
+### 🏠 [Homepage](https://akkadu.github.io/Akkadu_Challenges)
 
 ## Usage
 
 Start by selecting a challenge below and creating a branch with your name/position-applying-for
 
-1. [Media Streaming Engineer](akkadu.github.io/Akkadu_Challenges/media-streaming-engineer)
-2. [Front End Engineer](akkadu.github.io/Akkadu_Challenges/front-end-engineer)
-3. [Full Stack Engineer](akkadu.github.io/Akkadu_Challenges/fullstack-engineer)
+1. [Media Streaming Engineer](https://akkadu.github.io/Akkadu_Challenges/media-streaming-engineer)
+2. [Front End Engineer](https://akkadu.github.io/Akkadu_Challenges/front-end-engineer)
+3. [Full Stack Engineer](https://akkadu.github.io/Akkadu_Challenges/fullstack-engineer)
 
 ## Authors
 

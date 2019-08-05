@@ -47,10 +47,10 @@
 ## Open a PR
 
 - Go to Github and [open a new pull request][open-pull-request] from your branch to master.
-- Fill out the [pull request template][pull-request-template] and assign [me][pterobyte] as a reviewer.
+- Fill out the [pull request template][pull-request-template] and assign [Pterobyte][pterobyte] as a reviewer.
 - I'll add my comments, deploy it, test it, and approve or request changes based on my experience.
 
-If you have any questions regarding these challenges or have suggestions/feedback, feel free to email me at jt@akkadu-team.com 🤓
+If you have any questions regarding these challenges or have suggestions/feedback, feel free to [email me](jt@akkadu-team.com) 🤓
 
 Go forth and hammer out some bangin new web app! 🔨
 

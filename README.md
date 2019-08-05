@@ -1,31 +1,41 @@
-# Welcome to Akkadu_Challenges 👋
+![Akkadu Logo](assets/akkadu-logo.png)
+
+# Welcome to Akkadu Challenges 👋
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Akkadu/Akkadu_Challenges/blob/release/alpha/LICENSE)
 
 > Challenges provided by the Akkadu team for the recruitment of new applicants
 
-### 🏠 [Homepage](https://akkadu.github.io/Akkadu_Challenges)
+### 🏠 [Homepage](homepage)
 
-## Usage
+## Where to Start
 
-Start by selecting a challenge below and creating a branch with your name/position-applying-for
+Select a challenge below and create a new branch called your name/challenge
 
-1. [Media Streaming Engineer](https://akkadu.github.io/Akkadu_Challenges/media-streaming-engineer)
-2. [Front End Engineer](https://akkadu.github.io/Akkadu_Challenges/front-end-engineer)
-3. [Full Stack Engineer](https://akkadu.github.io/Akkadu_Challenges/fullstack-engineer)
+- [Media Streaming Engineer][media-streaming-engineer]
+- [Front End Engineer][front-end-engineer]
+- [Full Stack Engineer][full-stack-engineer]
 
-## Authors
+Then refer to [Contributing](#contributing) for how to open a pull request
 
-👤 [**JT Houk**](https://github.com/Pterobyte)
-👤 [**Tuomo Nieminen**](https://github.com/TNieminen)
-👤 [**Jonas Bakebwa**](https://github.com/codebender828)
-
-## 🤝 Contributing
+## Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check [issues page](https://github.com/Akkadu/Akkadu_Challenges/issues).
+Make sure to read our [Code of Conduct][code-of-conduct] for information on the kinds of conduct we expect at Akkadu.
+
+Ready to submit your code for review? Please read our [Contributing page][contributing].
+
+Find a problem with these challenges? Feel free to check our [Issues page][issues].
+
+## Authors
+
+👤 [**JT Houk**][jt]
+
+👤 [**Tuomo Nieminen**][tuomo]
+
+👤 [**Jonas Bakebwa**][jonas]
 
 ## Show your support
 
@@ -33,4 +43,19 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-This project is [MIT](https://github.com/Akkadu/Akkadu_Challenges/blob/release/alpha/LICENSE) licensed.
+This project is [MIT][mit] licensed.
+
+[homepage]: https://akkadu.github.io/Akkadu_Challenges
+
+[media-streaming-engineer]: https://akkadu.github.io/Akkadu_Challenges/media-streaming-engineer
+[front-end-engineer]: https://akkadu.github.io/Akkadu_Challenges/front-end-engineer
+[full-stack-engineer]: https://akkadu.github.io/Akkadu_Challenges/full-stack-engineer
+
+[code-of-conduct]: https://github.com/Akkadu/Akkadu_Challenges/blob/master/CODE_OF_CONDUCT.md
+[contributing]: https://github.com/Akkadu/Akkadu_Challenges/blob/master/.github/contributing.md
+[issues]: https://github.com/Akkadu/Akkadu_Challenges/issues
+[mit]: https://github.com/Akkadu/Akkadu_Challenges/blob/release/alpha/LICENSE
+
+[jt]: https://github.com/Pterobyte
+[tuomo]: https://github.com/TNieminen
+[jonas]: https://github.com/codebender828

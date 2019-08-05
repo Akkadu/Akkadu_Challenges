@@ -1,4 +1,4 @@
-![Akkadu Logo](assets/akkadu-logo.png)
+[![Akkadu Logo](assets/akkadu-logo.png)](https://app.akkadu.com)
 
 # Welcome to Akkadu Challenges 👋
 

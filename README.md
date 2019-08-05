@@ -2,22 +2,22 @@
 
 # Welcome to Akkadu Challenges 👋
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Akkadu/Akkadu_Challenges/blob/release/alpha/LICENSE)
-
 > Challenges provided by the Akkadu team for the recruitment of new applicants
 
 ### 🏠 [Homepage](homepage)
 
+![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Akkadu/Akkadu_Challenges/blob/release/alpha/LICENSE)
+
 ## Where to Start
 
-Select a challenge below and create a new branch called challenge/your-name
+Select a position below and read the instructions
 
 - [Media Streaming Engineer][media-streaming-engineer]
 - [Front End Engineer][front-end-engineer]
 - [Full Stack Engineer][full-stack-engineer]
 
-Then refer to [Contributing](#contributing) for how to open a pull request
+Then refer to [Contributing](#contributing) for information on how to open a pull request
 
 ## Contributing
 

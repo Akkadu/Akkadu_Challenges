@@ -4,7 +4,7 @@
 
 > Challenges provided by the Akkadu team for the recruitment of new applicants
 
-### 🏠 [Homepage](homepage)
+### 🏠 [Homepage][homepage]
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Akkadu/Akkadu_Challenges/blob/release/alpha/LICENSE)

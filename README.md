@@ -11,7 +11,7 @@
 
 ## Where to Start
 
-Select a challenge below and create a new branch called your name/challenge
+Select a challenge below and create a new branch called challenge/your-name
 
 - [Media Streaming Engineer][media-streaming-engineer]
 - [Front End Engineer][front-end-engineer]

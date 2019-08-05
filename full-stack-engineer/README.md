@@ -42,7 +42,7 @@
 - 👾 Server code that can be deployed and run on a server
 - 🛰 Publicly accessible APIs
 
-### NOTE: Feel free to use boilerplates or starter code according to your preference (we would use [create-nuxt-app][create-nuxt-app] or [express-generator][express-generator], you can use whatever you're comfortable with, as long as the challenge is completed to the specification)
+*NOTE: Feel free to use boilerplates or starter code according to your preference (we would use [create-nuxt-app][create-nuxt-app] or [express-generator][express-generator], you can use whatever you're comfortable with, as long as the challenge is completed to the specification)*
 
 ## Open a PR
 

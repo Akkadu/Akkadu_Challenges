@@ -35,7 +35,7 @@ Find a problem with these challenges? Feel free to check our [Issues page][issue
 
 👤 [**Tuomo Nieminen**][tuomo]
 
-👤 [**Jonas Bakebwa**][jonas]
+👤 [**Jonathan Bakebwa**][jonas]
 
 ## Show your support
 

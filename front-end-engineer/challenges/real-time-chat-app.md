@@ -1,4 +1,4 @@
-##💬 Real Time Chat App (Akkadu | Front End Engineer Challenge)
+## 💬 Real Time Chat App (Akkadu | Front End Engineer Challenge)
 
 The goal of this challenge is to create a [Vue.js](https://vuejs.org) / [Nuxt.js](https://nuxtjs.org) real-time chat application on the web that is able to broadcast messages to multiple clients.
 

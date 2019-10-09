@@ -17,14 +17,25 @@ It would be great if you could also come up with some UI designs and include the
 ![Mobile Profile Challenge - Home View](../assets/profile-uis/mobile-home.png)  ![Mobile Profile Challenge - User View](../assets/profile-uis/mobile-user.png)  ![Mobile Profile Challenge - Request View](../assets/profile-uis/mobile-request.png)
 
 ### 🐚 Challenge Conditions
-- Your chat app isn't required to save data.
-- Should be real time (low latency).
-- Users should be able to join separate rooms.
-- Should be able to distinguish from messages sent and messages received.
-- Messages should have time stamps.
-- User should be able to set their user name.
-- Messages should include sender's user name.
-
+- **Do not use any UI libraries if you can**. We'd like to know that you understand the concepts of building components that are reusable.
+- All CSS should be written in SCSS.
+- Make use of components in your user interfaces as much as possible.
+- Your components should be tested.
+- Make use of the color palette provided below:
+```scss
+:root {
+  --color-100: #dcfdfb;
+  --color-200: #b8f3ee;
+  --color-300: #93e9e1;
+  --color-400: #6aded5;
+  --color-500: #43d5c9;
+  --color-600: #2abcb0;
+  --color-700: #1b9289;
+  --color-800: #0b6962;
+  --color-900: #00403c;
+  --color-1000: #001816;
+}
+```
 
 ### ⚡️ Challenge Submission
 Once you're satisfied with your submission, follow [these instructions](../README.md#open-a-pr) to create a pull request for your submission! Good luck!

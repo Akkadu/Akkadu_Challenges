@@ -3,11 +3,14 @@
 > A Full Stack engineer should be comfortable writing deployable server code, working with external resources (databases, apis, etc), and drafting user interfaces to create complete, deployable apps from scratch.
 
 ## Clone this Repo
-
-1. `git clone git@github.com:Akkadu/Akkadu_Challenges.git`
-2. `gco -b [challenge-name/your-name]`
-3. `cd Akkadu_Challenges/full-stack-engineer/submissions`
-4. `mkdir [your-name] && cd $_`
+1. **Fork** this repository
+2. **Clone into your fork** of this repository.
+3. `git checkout -b [challenge-name/your-name]`
+4. `cd Akkadu_Challenges/full-stack-engineer/submissions`
+5. `mkdir [your-name] && cd $_`
+6. When your finished with the challenge, push your local code to your remote fork.
+7. Open a pull request between your remote branch and our base repository.
+8. Add a reviewer 👍🏽
 
 ## Choose a Challenge
 

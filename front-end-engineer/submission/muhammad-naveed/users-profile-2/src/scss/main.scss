@@ -1,0 +1,402 @@
+@import "_variables";
+
+@mixin btn($bg, $color, $py, $px) {
+  background: $bg;
+  color: $color;
+  border: none;
+  padding: $py $px;
+  border-radius: 0.4rem;
+  font-weight: bolder;
+  font-size: 1rem;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $bg-primary;
+  font-family: $font-family;
+  color: $text-primary;
+}
+
+.content-wrapper {
+  padding: 3rem 1rem;
+}
+
+.home {
+  width: 90vw;
+  margin: 0 auto;
+
+  .page-title {
+    margin: 0.4rem 0;
+    font-size: 3rem;
+    color: $text-secondary;
+    font-weight: bolder;
+  }
+
+  .sub-title {
+    font-size: 1.3rem;
+  }
+
+  .list-wrapper {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.card {
+  position: relative;
+  background-color: #ffffff;
+  background: linear-gradient(top left, #FFFFFF, rgba(66, 204, 255, 0.05));
+  border-radius: 5px;
+  flex: 1 300px;
+  margin: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15), 0 3px 6px 0 rgba(0, 0, 0, 0.15);
+
+  .card-body {
+    padding: 1.5rem 0.5rem 0.5rem .5rem;
+    display: block;
+    text-decoration: none;
+    color: $text-primary;
+    text-align: center;
+
+    img {
+      height: 7rem;
+      filter: grayscale(60%);
+    }
+
+    .user-details {
+      .info-list {
+        text-align: left;
+        font-size: .90rem;
+        list-style: none;
+        padding-left: 0;
+        li {
+          padding: .50rem 1rem;
+          vertical-align: middle;
+          border-top: 1px solid #dfdfdf;
+          i.fa {
+            padding-right: .75rem;
+            color: $text-secondary;
+          }
+        }
+      }
+      .user-name {
+        font-size: 1.2rem;
+        margin: 0.8rem 0;
+        color: $text-secondary;
+      }
+
+      .widget {
+        font-size: 2.2vw;
+        padding-right: 10px;
+      }
+    }
+  }
+
+  .delete-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0 5px 5px 5px;
+
+    .fa {
+      &.fa-times-thin:before {
+        content: "\00d7";
+        color: $text-primary;
+        font-weight: bold;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover .fa-times-thin:before {
+      color: #dc3545;
+    }
+  }
+
+  &:hover {
+    border: 1px solid #e5eaed;
+  }
+  &:hover img {
+    filter: grayscale(0%);
+  }
+}
+
+.img-fluid {
+  width: 5rem;
+}
+
+.empty-view {
+  text-align: center;
+
+  img {
+    width: 5rem;
+    filter: grayscale(100%);
+  }
+
+  p {
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 2.5rem 0 3rem 0;
+  }
+
+  button {
+    @include btn($text-primary, #FFFFFF, 1rem, 2rem);
+  }
+
+}
+
+.loader {
+  text-align: center;
+  margin-top: 3rem;
+
+  .fa {
+    color: $text-primary;
+    font-size: 3rem;
+  }
+}
+
+.profile {
+  .back-btn {
+    color: $text-primary;
+    margin: 1rem 0 2rem 1rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+
+    i.fa {
+      padding-right: 1rem;
+    }
+  }
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column !important;
+  padding-top: 2rem;
+
+  .left-col {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+
+    img {
+      width: 12rem;
+      font-weight: normal;
+    }
+
+    p {
+      font-weight: 800;
+      font-size: 1.6rem;
+      margin: 0.5rem 0 1rem 0;
+      color: $text-secondary;
+    }
+  }
+
+  .right-col {
+    width: 100%;
+
+    h1 {
+      margin: 0;
+      font-size: 3.5rem;
+      font-weight: bold;
+      display: none;
+      color: $text-secondary;
+    }
+
+    .user-info {
+      display: flex;
+      justify-content: center;
+    }
+
+    .fa-ul {
+      margin-bottom: 3rem;
+
+      .fa-li {
+        color: $text-secondary;
+      }
+
+      li {
+        font-size: 1.2rem;
+        margin: 0.8rem 0;
+      }
+    }
+
+    .action-bar {
+      padding-left: 10vw;
+
+      .del-btn {
+        @include btn(#dc3545, #ffffff, 0.7rem, 2rem);
+      }
+    }
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .home {
+    width: 86%;
+  }
+  .card {
+    flex: 1 300px;
+    margin: 10px;
+    max-width: calc(50% - 20px);
+    .card-body {
+      text-decoration: none;
+      color: $text-primary;
+      text-align: center;
+
+      img {
+        height: 5rem;
+      }
+    }
+
+    .user-details {
+      .info-list {
+        text-align: left !important;
+        font-size: .75rem;
+        padding-left: 0;
+        li {
+          padding: .50rem .25rem;
+          border-top: 1px solid #dfdfdf;
+        }
+      }
+      .user-name {
+        font-size: 1.6rem;
+      }
+    }
+
+    .widget {
+      font-size: 0.7rem !important;
+    }
+  }
+  .img-fluid {
+    width: 10rem !important;
+  }
+
+  .profile-content {
+    .left-col {
+      img {
+        width: 15rem;
+        font-weight: normal;
+      }
+
+      p {
+        font-weight: 800;
+        font-size: 2.2rem !important;
+      }
+    }
+
+    .right-col {
+      padding: 1rem;
+
+      .fa-ul {
+        li {
+          font-size: 1.4rem;
+        }
+      }
+
+      .action-bar {
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .home {
+    width: 70%;
+  }
+  .card {
+    .card-body {
+      img {
+        height: 5rem;
+      }
+    }
+
+    .user-details {
+      .user-name {
+        font-size: 1.8rem;
+      }
+    }
+
+    .widget {
+      font-size: 0.8rem !important;
+    }
+  }
+
+  .profile {
+    .back-btn {
+      display: none;
+    }
+  }
+
+  .profile-content {
+    flex-direction: row !important;
+
+    .left-col {
+      padding: 1rem;
+      width: 30% !important;
+
+      p {
+        margin-top: 1rem;
+        font-size: 1.5rem !important;
+        font-weight: normal;
+      }
+    }
+
+    .right-col {
+      width: 60% !important;
+
+      h1 {
+        display: block !important;
+        font-size: 2.5rem;
+      }
+
+      .user-info {
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .home {
+    width: 55%;
+  }
+  .card {
+    .card-body {
+      img {
+        height: 5rem;
+      }
+    }
+
+    .widget {
+      font-size: 1rem;
+    }
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .home {
+    width: 45%;
+  }
+  .card {
+    .widget {
+      font-size: 1.3rem;
+    }
+  }
+}

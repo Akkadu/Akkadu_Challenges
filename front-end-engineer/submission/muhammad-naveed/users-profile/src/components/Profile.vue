@@ -1,9 +1,9 @@
 <template>
     <div class="profile">
-        <router-link :to="{name: 'home'}" class="back-btn">
+        <span class="back-btn" @click="setSelectedUser">
             <i class="fa fa-arrow-left"></i>&nbsp;&nbsp;&nbsp;&nbsp; Back to Profiles
-        </router-link>
-        <div class="profile-content" v-if="typeof user !== 'undefined'">
+        </span>
+        <div class="profile-content">
             <div class="left-col">
                 <img :src="user.photo" alt="User profile photo"/>
                 <p>{{ user.name }}</p>
@@ -43,37 +43,28 @@
                 </div>
             </div>
         </div>
-        <div v-else>
-            <router-link :to="{name: 'home'}" class="back-btn">
-                No data found go to <i class="fa fa-home"></i>
-            </router-link>
-        </div>
     </div>
 </template>
 <script>
+    import {mapGetters} from 'vuex'
+
     export default {
         name: "Profile",
-        data() {
-            return {
-                //this will load the user form vuex store by user id(passed via router params).
-                user: this.$store.getters.getUserById(this.$route.params.id)
-            };
-        },
-        created() {
-            if (!this.$store.state.users.length) {
-                this.$router.push({name: 'home'});
-            }
-        },
-        mounted() {
-            //to scroll to the top of the window on profile load, for better user experience.
-            window.scrollTo(0, 0);
-        },
         methods: {
             //this will remove the user from vuex store and route back to the home component.
             deleteProfile(user) {
                 this.$store.dispatch("deleteUser", user);
-                this.$router.push({name: 'home'});
+                this.$store.dispatch('setSelectedUser', null)
             },
+            //hides the user profile by setting the selected user to null
+            setSelectedUser() {
+                this.$store.dispatch('setSelectedUser', null)
+            }
+        },
+        computed: {
+            ...mapGetters({
+                user: 'getSelectedUser'
+            })
         },
         filters: {
             //to trim the extra string from the end of the phone number.

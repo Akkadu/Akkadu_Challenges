@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        users: []
+        users: [],
+        selectedUser: null,
     },
     mutations: {
         //Set users if the users array is empty
@@ -13,6 +14,10 @@ export default new Vuex.Store({
             if (!state.users.length) {
                 state.users = users;
             }
+        },
+        //sets the selected user
+        setSelectedUser(state, user) {
+            state.selectedUser = user;
         },
         //Delete item from users array
         deleteUser(state, id) {
@@ -26,10 +31,15 @@ export default new Vuex.Store({
         deleteUser(context, user) {
             context.commit("deleteUser", user);
         },
+        setSelectedUser(context, user) {
+            context.commit('setSelectedUser', user)
+        },
     },
     getters: {
+        getUsers: (state) => state.users,
         getUserById: (state) => (id) => {
             return state.users.filter(item => item.id === id).shift()
-        }
+        },
+        getSelectedUser: (state) => state.selectedUser,
     }
 });

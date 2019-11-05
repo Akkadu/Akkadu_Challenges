@@ -27,16 +27,23 @@ body {
   padding: 3rem 1rem;
 }
 
+.main {
+  position: relative;
+}
+
 .home {
   width: 90vw;
   margin: 0 auto;
+
   .page-title {
     margin: 0.4rem 0;
     font-size: 3rem;
   }
+
   .sub-title {
     font-size: 1.3rem;
   }
+
   .list-wrapper {
     margin-top: 2rem;
   }
@@ -48,6 +55,7 @@ body {
   margin: 1rem 0;
   border-radius: 5px;
   width: 100%;
+  cursor: pointer;
   box-shadow: 0 1px 4px 1px rgba(50, 50, 50, 0.178);
 
   .delete-btn {
@@ -55,6 +63,7 @@ body {
     right: 0;
     top: 0;
     padding: 0 5px 5px 5px;
+
     .fa {
       &.fa-times-thin:before {
         content: "\00d7";
@@ -98,6 +107,7 @@ body {
     .widget {
       font-size: 2.2vw;
       padding-right: 10px;
+
       i.fa {
         padding-right: .50rem;
       }
@@ -139,11 +149,17 @@ body {
 }
 
 .profile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
   .back-btn {
     color: $color-800;
     margin: 1rem 0 2rem 1rem;
     font-size: 1.5rem;
-    text-decoration: none;
+    cursor: pointer;
 
     i.fa {
       padding-right: 1rem;
@@ -199,6 +215,7 @@ body {
 
     .action-bar {
       padding-left: 10vw;
+
       .del-btn {
         @include btn(#dc3545, #ffffff, 0.7rem, 2rem);
       }
@@ -257,6 +274,7 @@ body {
           font-size: 1.4rem;
         }
       }
+
       .action-bar {
         padding-left: 0;
       }
@@ -291,11 +309,6 @@ body {
     }
   }
 
-  .profile {
-    .back-btn {
-      display: none;
-    }
-  }
 
   .profile-content {
     flex-direction: row !important;

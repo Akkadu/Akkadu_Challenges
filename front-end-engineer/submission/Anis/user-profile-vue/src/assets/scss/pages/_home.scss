@@ -1,0 +1,73 @@
+.home__page {
+	width: 90%;
+	padding: 2%;
+	@include margin(0, auto, 0, auto);
+	.home__page__title {
+		@include margin(2rem, auto, auto, auto);
+		font-size: 2.4rem;
+	}
+	.home__page__title-sub {
+		@include margin(1rem, auto, auto, auto);
+		font-size: 1.4rem;
+	}
+	.home__page__users {
+		@include margin(2rem, auto, auto, auto);
+	}
+	.home__page__empty__view {
+		@include margin(5rem, auto, auto, auto);
+		text-align: center;
+		.home__page__empty__view__image {
+			width: 6rem;
+		}
+		.home__page__empty__view__text {
+			font-size: 1.3rem;
+            text-align: center;
+            line-height: 1.8rem;
+			@include margin(2.5rem, 0, 2.5rem, 0);
+		}
+		.button__request-user {
+			@include btn($color-800, #FFFFFF, bolder, 1rem, 2rem);
+		}
+	}
+}
+
+// Responsive
+// Small devices 
+@media (min-width: 576px) {
+	.home__page {
+		width: 96%;
+	}
+	.home__page__title {
+		font-size: 2.5rem;
+	}
+	.home__page__title-sub {
+		font-size: 1.2rem;
+	}
+}
+
+// Medium devices 
+@media (min-width: 768px) {
+	.home__page {
+		width: 80%;
+	}
+}
+
+@media (min-width: 850px) {
+	.home__page {
+		width: 72%;
+	}
+}
+
+// Large devices 
+@media (min-width: 992px) {
+	.home__page {
+		width: 60%;
+	}
+}
+
+// Extra Large devices
+@media (min-width: 1200px) {
+	.home__page {
+		width: 50%;
+	}
+}

@@ -59,14 +59,6 @@ export default {
     requestUsers() {
       this.getAllUsers();
     }
-  },
-  mounted() {
-    //get all users on mounted lifecycle hook
-    console.log(this.users.length)
-    if (!this.users.length) {
-      console.log('called')
-      this.getAllUsers();
-    }
   }
 };
 </script>

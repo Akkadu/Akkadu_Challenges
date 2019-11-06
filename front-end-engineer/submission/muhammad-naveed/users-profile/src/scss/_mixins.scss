@@ -1,0 +1,9 @@
+@mixin btn($bg, $color, $py, $px) {
+  background: $bg;
+  color: $color;
+  border: none;
+  padding: $py $px;
+  border-radius: 0.4rem;
+  font-weight: bolder;
+  font-size: 1rem;
+}

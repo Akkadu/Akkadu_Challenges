@@ -36,11 +36,6 @@
         props: {
             user: Object
         },
-        data() {
-            return {
-                myIcon: require("@/assets/envelope-solid.svg")
-            };
-        },
         methods: {
             //to remove the user by id from the users array in vuex store.
             deleteUser(user) {

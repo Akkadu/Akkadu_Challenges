@@ -1,16 +1,4 @@
-:root {
-  --color-100: #dcfdfb;
-  --color-200: #b8f3ee;
-  --color-300: #93e9e1;
-  --color-400: #6aded5;
-  --color-500: #43d5c9;
-  --color-600: #2abcb0;
-  --color-700: #1b9289;
-  --color-800: #0b6962;
-  --color-900: #00403c;
-  --color-1000: #001816;
-}
-
+// Theme colors
 $color-100: #dcfdfb;
 $color-200: #b8f3ee;
 $color-300: #93e9e1;
@@ -28,5 +16,5 @@ $color-1000: #001816;
 // Font settings
 $font-family-roboto: "Roboto", sans-serif;
 $font-size-base: 1.5rem;
-$line-height-base: 1.5;
+$line-height-base: 1.5rem;
 

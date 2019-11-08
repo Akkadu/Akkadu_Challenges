@@ -65,12 +65,6 @@ export default {
     return {
       title: "User Profiles"
     };
-  },
-  mounted() {
-    //get all users on mounted lifecycle hook
-    if (!this.users.length) {
-      this.getAllUsers();
-    }
   }
 };
 </script>

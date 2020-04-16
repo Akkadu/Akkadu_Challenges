@@ -36,16 +36,16 @@ Implement an API endpoint that meets the following specifications:
 
 ### Request parameters
 
-The endpoint should accept some parameters that filter the selection:
+The endpoint should be filterable by the folowing query parameters:
 
-| Method | Name | Type | Description |
-|--------|------|------|-------------|
-| `GET`  | `currency` | `string` | The name of the currency by which to group the transactions, this corresponds to the `currency` field in the `accounts` table. <br>Example values: `EUR`, `USD`, `GBP`.
-| `GET`  | `active_users_only` | `boolean` | Whether to get the transactions for all users, or only active users (these are users with `is_active = True` in the `users` database)
-| `GET`  | `user_type` | `string` | The type of the user to select. Values can be {`all`, `corporate`, `individual`}. This corresponds to the `type` field on the `users` table. Note that `all` means all `type`s of users should be included.
-| `GET`  | `account_type` | `string` | The type of account to get transactions for. This corresponds to the field `type` in the `accounts` table. Values can be one of {`all`, `main`, `secondary`}
+| Parameter | Type | Description |
+|------|------|-------------|
+| `currency` | `string` | The name of the currency by which to group the transactions, this corresponds to the `currency` field in the `accounts` table. <br>Example values: `EUR`, `USD`, `GBP`.
+| `active_users_only` | `boolean` | Whether to get the transactions for all users, or only active users (these are users with `is_active = True` in the `users` database)
+| `user_type` | `string` | The type of the user to select. Values can be {`all`, `corporate`, `individual`}. This corresponds to the `type` field on the `users` table. Note that `all` means all `type`s of users should be included.
+| `account_type` | `string` | The type of account to get transactions for. This corresponds to the field `type` in the `accounts` table. Values can be one of {`all`, `main`, `secondary`}
 
-You can view `currency` as the main parameter in of the endpoint. The remaining parameters are additional filters that let the user specify a narrower subset of data to include. For instance, if `active_users_only` is `true`, then the result should only include data associated with active users (users where `is_active` field is `true` in the `users` table); if `account_type` is `secondary`, then the response should only include data associated with secondary accounts (accounts where `type = 'secondary'` in `accounts` table).
+The above parameters are filters that let the client specify a narrower subset of data to include. For instance, if `active_users_only` is `true`, then the result should only include data associated with active users (users where `is_active` field is `true` in the `users` table); if `account_type` is `secondary`, then the response should only include data associated with secondary accounts (accounts where `type = 'secondary'` in `accounts` table).
 
 ### Response
 
@@ -55,7 +55,7 @@ Format: JSON
 |------|---------------------------------|
 | 200  | OK                              |
 
-The response should return the latest transaction for each user / account that matches the filters, grouped by `country`. It should also contain the sum of all the transactions for each country.
+The response should return the latest transaction for each user account that matches the filters, grouped by `country`, as well as an aggregate of all the transactions within each country.
 
 A sample response is below:
 

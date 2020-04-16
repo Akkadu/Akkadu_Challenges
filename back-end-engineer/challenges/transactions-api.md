@@ -1,6 +1,6 @@
 # Overview
 
-You need to create a Node.js / Express project that implements a handful of API endpoints that use the provided MySQL database's test data and return responses.
+This task is to create a Node.js / Express server with API endpoints to query, analyze, and filter data from a provided MySQL Dump file.
 
 ## Prerequisites
 
@@ -118,3 +118,18 @@ A sample response is below:
 }
 ```
 
+## Evaluation
+
+Your project should include:
+
+- Self-documenting code
+- A README.md that describes your strategy and implementation
+- A [Postman](https://www.postman.com/) API collection
+
+Be prepared to be interviewed about your implementation!
+
+## Bonus Points
+
+- Host your code on a server using any cloud service provider
+- Include unit tests and a test script
+- Clearly document your code

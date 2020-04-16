@@ -3,6 +3,7 @@
 > A Back End engineer should be comfortable writing deployable server code, working with databases (SQL, noSQL, etc), and designing RESTful and sensible APIs.
 
 ## Clone this Repo
+
 1. **Fork** this repository
 2. **Clone into your fork** of this repository.
 3. `git checkout -b [challenge-name/your-name]`
@@ -14,8 +15,8 @@
 
 ## Choose a Challenge
 
-- ✅ [**User Stats API**](./challenges/user-stats-api.md)
-  > Create a product review application on the web where a user can create, view, update, and delete reviews to a set of products, as well as 
+- ✅ [**Transactions API**](./challenges/transactions-api.md)
+  > An API to query, analyze, and filter user transaction data
 
 ### All Challenges Should Include
 
@@ -24,7 +25,7 @@
 - 📫 [Postman](https://www.postman.com/) API collection
 - 🗄 Database with persistant data
 
-*NOTE: Feel free to use boilerplates or starter code according to your preference (we would use [create-nuxt-app][create-nuxt-app] or [express-generator][express-generator], you can use whatever you're comfortable with, as long as the challenge is completed to the specification)*
+*NOTE: Feel free to use boilerplates or starter code according to your preference (we would use [express-generator][express-generator], you can use whatever you're comfortable with, as long as the challenge is completed to the specification)*
 
 ## Open a PR
 
@@ -34,9 +35,8 @@
 
 If you have any questions regarding these challenges or have suggestions/feedback, feel free to [email me](mailto:jt@akkadu-team.com?subject=Akkadu%20Challenges%20Feedback) 🤓
 
-Go forth and hammer out some bangin new web app! 🔨
+Go forth and hammer out some bangin new web api! 🔨
 
-[create-nuxt-app]: https://nuxtjs.org/guide/installation/
 [express-generator]: https://expressjs.com/en/starter/generator.html
 [open-pull-request]: https://github.com/Akkadu/Akkadu_Challenges/compare
 [pull-request-template]: https://github.com/Akkadu/Akkadu_Challenges/blob/master/.github/pull_request_template.md

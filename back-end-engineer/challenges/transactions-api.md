@@ -59,7 +59,7 @@ The response should return the latest transaction for each user / account that m
 
 A sample response is below:
 
-```json
+```js
 {
     "status": 0,
     "data": [
@@ -70,7 +70,7 @@ A sample response is below:
                 "percent_change": -0.15 // average of `percent_change` in `latest_transactions`
             },
             // latest transactions for each "FR" accounts that match the filters
-            "transactions": [ 
+            "transactions": [
                 {
                     "id": 123,
                     "account_id": 14,

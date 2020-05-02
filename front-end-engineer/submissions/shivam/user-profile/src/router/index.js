@@ -1,19 +1,19 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import UserList from "../views/user-list.vue";
-import UserDetails from "../views/user-details.vue";
+import UserList from "../views/user-list";
+import UserDetails from "../views/user-details";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "UserList",
+    name: "user-list",
     component: UserList
   },
   {
-    path: "/:id",
-    name: "UserDetails",
+    path: "/users/:id",
+    name: "user-details",
     component: UserDetails
   },
 ];

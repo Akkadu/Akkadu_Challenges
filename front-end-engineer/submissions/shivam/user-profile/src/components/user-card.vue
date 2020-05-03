@@ -10,22 +10,28 @@
       />
     </div>
     <div class="user-card__user-info has-color-800">
-      <div class="user-card__user-info__name pb-5">{{user.name}}</div>
-      <div class="user-card__user-info__contact pb-10">
+      <div class="user-card__user-info__name pb-8">{{user.name}}</div>
+      <div class="user-card__user-info__contact">
         <user-info
-          :faIcon="'fa-envelope'"
+          :infoIcon="mailIcon"
           :infoText="user.email"
-          :infoTextClass="'text-is-8-500'"
-          class="pb-10"
+          :infoTextClass="infoTextClass"
+          class="pb-8"
         />
-        <user-info :faIcon="'fa-phone'" :infoText="user.phone" :infoTextClass="'text-is-8-500'" />
+        <user-info
+          :infoIcon="phoneIcon"
+          :infoText="user.phone"
+          :infoTextClass="infoTextClass"
+          class="pb-8"
+        />
       </div>
       <user-info
-        :faIcon="'fa-hotel'"
-        :infoText="user.company.name + ' - '"
-        :infoTextClass="'text-is-8-500'"
+        :infoIcon="companyIcon"
+        :infoText="user.company.name"
+        :infoTextClass="infoTextClass"
         :infoSubtext="user.company.catchPhrase"
-        :infoSubtextClass="'text-is-8-500 text-is-italic'"
+        :infoSubtextClass="infoSubtextClass"
+        :isSubtextInline="isSubtextInline"
       />
     </div>
   </div>
@@ -37,7 +43,17 @@ export default {
   components: {
     UserInfo
   },
-  props: ["user"]
+  props: ["user"],
+  data() {
+    return {
+      infoTextClass: "text-is-8-500",
+      infoSubtextClass: "text-is-8-500 text-is-italic",
+      isSubtextInline: true,
+      mailIcon: "fas fa-envelope",
+      phoneIcon: "fas fa-phone",
+      companyIcon: "fas fa-hotel"
+    };
+  }
 };
 </script>
 
@@ -65,7 +81,7 @@ export default {
   }
 
   &__photo-wrapper {
-    width: 100px;
+    width: 80px;
 
     &__photo {
       border-radius: 50%;
@@ -81,7 +97,7 @@ export default {
     }
   }
   &__user-info {
-    width: calc(100%-100px);
+    flex: 1;
     padding-left: 16px;
 
     &__name {

@@ -38,7 +38,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 24px;
+  padding: 48px 24px;
 
   &__wrapper {
     width: 100%;

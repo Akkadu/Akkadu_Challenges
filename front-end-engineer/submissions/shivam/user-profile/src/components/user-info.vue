@@ -1,5 +1,5 @@
 <template>
-  <div class="user-info">
+  <div>
     <i class="fas pr-5" :class="faIcon" />
     <span class="pr-10" :class="infoTextClass">{{infoText}}</span>
     <span class="pr-10" :class="infoSubtextClass">{{infoSubtext}}</span>
@@ -13,7 +13,8 @@ export default {
     "infoText",
     "infoTextClass",
     "infoSubtext",
-    "infoSubtextClass"
+    "infoSubtextClass",
+    "isSubtextInline"
   ]
 };
 </script>

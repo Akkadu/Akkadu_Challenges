@@ -15,16 +15,23 @@ export default {
 <style lang="scss">
 @import "@/assets/styles/main.scss";
 
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#app {
+body {
   background-color: $--color-100;
   font-family: sans-serif;
-  top: 0;
-  left: 0;
-  right: 0;
-  min-height: 100vh;
+  font-size: 13px;
+
+  @media only screen and (min-width: 576px) {
+    font-size: 14px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    font-size: 16px;
+  }
 }
 </style>

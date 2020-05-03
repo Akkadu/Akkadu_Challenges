@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import UserService from "../services/user"
 
 Vue.use(Vuex);
 
@@ -21,14 +20,14 @@ export default new Vuex.Store({
     async loadUsers({ commit }) {
       try {
         //get users from api
-        let result = await new UserService().get();
+        let result = await Vue.service.getUsers();
 
         //convert list of users to user object mapped using id
         let usersObj = Object.assign({}, ...(result.map(element => ({ [element.id]: element }))));
 
         commit("setUsers", usersObj);
       } catch (error) {
-        console.log(error)
+        console.log("store loadUsers error", error)
       }
     },
 

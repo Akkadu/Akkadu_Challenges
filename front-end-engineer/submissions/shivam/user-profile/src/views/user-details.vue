@@ -2,7 +2,7 @@
   <div v-if="user" class="user-details">
     <div @click="$router.push({name: 'user-list'})" class="has-color-700 cursor-is-pointer">
       <i class="fas fa-arrow-left text-is-14" />
-      <span class="text-is-16-500 pl-10">Back to Profiles</span>
+      <span class="text-is-16 has-weight-500 pl-10">Back to Profiles</span>
     </div>
     <div class="user-details__wrapper">
       <div class="user-details__wrapper__name-with-photo">
@@ -17,7 +17,7 @@
       </div>
       <div class="user-details__wrapper__info-wrapper">
         <h1
-          class="user-details__wrapper__info-wrapper__name text-is-24-600 has-color-800"
+          class="user-details__wrapper__info-wrapper__name text-is-24 has-weight-600 has-color-800"
         >{{user.name}}</h1>
         <div class="user-details__wrapper__info-wrapper__info">
           <user-info
@@ -55,7 +55,7 @@
         </div>
         <div @click="deleteUser" class="user-details__wrapper__info-wrapper__delete-button">
           <i class="far fa-trash-alt" />
-          <span class="text-is-10-600">Delete</span>
+          <span class="text-is-10 has-weight-600">Delete</span>
         </div>
       </div>
     </div>
@@ -70,8 +70,9 @@ export default {
   },
   data() {
     return {
-      infoTextClass: "text-is-12-500 has-color-700",
-      infoSubtextClass: "text-is-12-500 has-color-700 text-is-italic",
+      infoTextClass: "text-is-12 has-weight-500 has-color-700",
+      infoSubtextClass:
+        "text-is-12 has-weight-500 has-color-700 text-is-italic",
       isSubtextInline: false,
       mailIconClass: "fas fa-envelope text-is-12 pr-10 has-color-800",
       phoneIconClass: "fas fa-phone text-is-12 pr-10 has-color-800",

@@ -32,7 +32,6 @@ export default new Vuex.Store({
     },
 
     deleteUser({ commit }, id) {
-      console.log("deleteUser", id);
       commit("deleteUser", id)
     }
   },

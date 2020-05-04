@@ -23,7 +23,7 @@ export default {
 
 body {
   background-color: $--color-100;
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
 
   @media only screen and (min-width: 576px) {
@@ -33,5 +33,7 @@ body {
   @media only screen and (min-width: 768px) {
     font-size: 16px;
   }
+
+  @include font-size(8, 24);
 }
 </style>

@@ -46,8 +46,8 @@ export default {
   props: ["user"],
   data() {
     return {
-      infoTextClass: "text-is-8-500",
-      infoSubtextClass: "text-is-8-500 text-is-italic",
+      infoTextClass: "text-is-8 has-weight-500",
+      infoSubtextClass: "text-is-8 has-weight-500 text-is-italic",
       isSubtextInline: true,
       mailIconClass: "fas fa-envelope pr-5",
       phoneIconClass: "fas fa-phone pr-5",

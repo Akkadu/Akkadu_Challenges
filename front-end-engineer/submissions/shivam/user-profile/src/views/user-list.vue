@@ -3,9 +3,9 @@
     <div class="user-list__wrapper">
       <no-user v-if="isUsersEmpty" />
       <div v-else>
-        <h1 class="text-is-24-600 has-color-800 mb-5">User Profiles</h1>
+        <h1 class="text-is-24 has-weight-600 has-color-800 pb-5">User Profiles</h1>
         <p
-          class="text-is-14-500 has-color-800 mb-20"
+          class="text-is-14 has-weight-500 has-color-800 pb-20"
         >Here is a list of our some of our awesome users living in Long Horn, FuXingMen.</p>
         <user-card v-for="user in users" :key="user.id" :user="user" />
       </div>

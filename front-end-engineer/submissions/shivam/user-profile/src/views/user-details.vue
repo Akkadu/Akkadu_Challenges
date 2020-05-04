@@ -88,6 +88,7 @@ export default {
   },
   methods: {
     deleteUser() {
+      //delete user and route to list page
       this.$store.dispatch("deleteUser", this.$route.params.id);
       this.$router.push({ name: "user-list" });
     }

@@ -26,6 +26,7 @@ export default {
   computed: {
     ...mapState(["users"]),
     isUsersEmpty() {
+      // check if the users state has any key
       for (let i in this.users) return false;
       return true;
     }

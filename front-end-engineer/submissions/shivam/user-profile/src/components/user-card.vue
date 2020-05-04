@@ -1,9 +1,13 @@
 <template>
   <div class="user-card">
-    <i @click="$store.dispatch('deleteUser', user.id)" class="fas fa-times user-card__times-icon" />
+    <i
+      @click.stop="$store.dispatch('deleteUser', user.id)"
+      class="fas fa-times user-card__times-icon"
+    />
     <div class="user-card__photo-wrapper">
       <img
-        @click="$router.push({name: 'user-details', params: {id: user.id}})"
+        @click.stop="
+        $router.push({name: 'user-details', params: {id: user.id}})"
         :src="user.photo"
         alt="user picture"
         class="user-card__photo-wrapper__photo"
@@ -43,7 +47,12 @@ export default {
   components: {
     UserInfo
   },
-  props: ["user"],
+  props: {
+    user: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       infoTextClass: "text-is-8 has-weight-500",

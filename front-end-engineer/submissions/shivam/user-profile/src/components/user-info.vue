@@ -18,6 +18,7 @@ export default {
   ],
   computed: {
     subtextString() {
+      //compute subtext string with or without hyphen '-'
       return this.isSubtextInline ? ` - ${this.infoSubtext}` : this.infoSubtext;
     }
   }

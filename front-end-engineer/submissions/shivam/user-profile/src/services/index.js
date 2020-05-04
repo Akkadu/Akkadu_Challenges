@@ -3,6 +3,7 @@ import axios from "axios";
 const BASE_URL = "https://akkadu-careers.s3.cn-north-1.amazonaws.com.cn/challenges/fe/data/json"
 
 class Service {
+    //method to make api request
     async makeRequest(method, endpoint, data = null) {
         try {
             let result = await axios({
@@ -16,6 +17,7 @@ class Service {
         }
     }
 
+    // add methods to makeRequest
     async getUsers() {
         return this.makeRequest("get", "users.json")
     }

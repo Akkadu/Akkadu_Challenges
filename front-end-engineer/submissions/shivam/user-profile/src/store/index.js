@@ -17,6 +17,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    //action to load users from api
     async loadUsers({ commit }) {
       try {
         //get users from api
@@ -31,11 +32,14 @@ export default new Vuex.Store({
       }
     },
 
+    //action to delete particular user
     deleteUser({ commit }, id) {
       commit("deleteUser", id)
     }
   },
   getters: {
+
+    //get particular user by id
     getUser: state => id => state.users[id],
   }
 });

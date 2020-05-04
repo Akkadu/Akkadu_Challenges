@@ -7,14 +7,14 @@
     <div class="user-card__photo-wrapper">
       <img
         @click.stop="
-        $router.push({name: 'user-details', params: {id: user.id}})"
+        $router.push({name: 'user-details', params: { id: user.id }})"
         :src="user.photo"
         alt="user picture"
         class="user-card__photo-wrapper__photo"
       />
     </div>
     <div class="user-card__user-info has-color-800">
-      <h2 class="user-card__user-info__name pb-8">{{user.name}}</h2>
+      <h2 class="user-card__user-info__name pb-8">{{ user.name }}</h2>
       <div class="user-card__user-info__contact">
         <user-info
           :infoIcon="mailIconClass"

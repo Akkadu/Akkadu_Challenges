@@ -10,23 +10,23 @@
       />
     </div>
     <div class="user-card__user-info has-color-800">
-      <div class="user-card__user-info__name pb-8">{{user.name}}</div>
+      <h2 class="user-card__user-info__name pb-8">{{user.name}}</h2>
       <div class="user-card__user-info__contact">
         <user-info
-          :infoIcon="mailIcon"
+          :infoIcon="mailIconClass"
           :infoText="user.email"
           :infoTextClass="infoTextClass"
-          class="pb-8"
+          class="pb-8 pr-10"
         />
         <user-info
-          :infoIcon="phoneIcon"
+          :infoIcon="phoneIconClass"
           :infoText="user.phone"
           :infoTextClass="infoTextClass"
           class="pb-8"
         />
       </div>
       <user-info
-        :infoIcon="companyIcon"
+        :infoIcon="companyIconClass"
         :infoText="user.company.name"
         :infoTextClass="infoTextClass"
         :infoSubtext="user.company.catchPhrase"
@@ -49,9 +49,9 @@ export default {
       infoTextClass: "text-is-8-500",
       infoSubtextClass: "text-is-8-500 text-is-italic",
       isSubtextInline: true,
-      mailIcon: "fas fa-envelope",
-      phoneIcon: "fas fa-phone",
-      companyIcon: "fas fa-hotel"
+      mailIconClass: "fas fa-envelope pr-5",
+      phoneIconClass: "fas fa-phone pr-5",
+      companyIconClass: "fas fa-hotel pr-5"
     };
   }
 };

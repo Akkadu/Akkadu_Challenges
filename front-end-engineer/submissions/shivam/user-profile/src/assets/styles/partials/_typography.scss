@@ -1,0 +1,46 @@
+/*
+ * font size mixin
+ */
+
+@mixin font-size($from, $to) {
+  @for $i from $from to $to {
+    .text-is-#{$i} {
+      font-size: 0.1rem * $i;
+    }
+  }
+}
+
+
+/*
+ * font-weight-helpers
+*/
+
+.has-weight-500 {
+  font-weight: 500;
+}
+
+.has-weight-600 {
+  font-weight: 600;
+}
+
+
+/*
+ * font-style-helpers
+ */
+
+.text-is-italic {
+  font-style: italic;
+}
+
+
+/*
+ * color helpers
+ */
+
+.has-color-800 {
+  color: $--color-800;
+}
+
+.has-color-700 {
+  color: $--color-700;
+}

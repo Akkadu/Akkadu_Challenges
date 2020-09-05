@@ -15,7 +15,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@nuxtjs/axios": "^5.3.6",
     "cross-env": "^5.2.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "nuxt": "^2.4.0",
     "nuxt-fontawesome": "^0.4.0",
     "sass-loader": "^8.0.0"

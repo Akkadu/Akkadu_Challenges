@@ -1,0 +1,38 @@
+{
+  "rules": {
+    "ordered-imports": [false],
+    "no-console": [false],
+    "object-literal-sort-keys": false,
+    "interface-over-type-literal": false,
+    "interface-name": [true, "never-prefix"],
+    "comment-format": [false, "check-space"],
+    "variable-name": [
+      false,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
+    ],
+    "no-unused-expression": [true, "allow-fast-null-checks"],
+    "jsx-no-lambda": [false],
+    "max-classes-per-file": false,
+    "member-access": false,
+    "no-empty": false,
+    "no-unused-variable": false,
+    "no-shadowed-variable": false
+  },
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "*.js",
+      "node_modules/**/*.ts",
+      "coverage/lcov-report/*.js",
+      "*.json",
+      "**/*.json"
+    ]
+  },
+  "jsRules": {
+    "object-literal-sort-keys": false,
+    "no-string-literal": false
+  }
+}

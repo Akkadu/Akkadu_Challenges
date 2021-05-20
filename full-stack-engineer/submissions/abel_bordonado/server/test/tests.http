@@ -1,0 +1,2 @@
+###
+POST http://127.0.0.1:5392/media/ping?effect=grayscale

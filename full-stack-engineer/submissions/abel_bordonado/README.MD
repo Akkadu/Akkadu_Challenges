@@ -9,6 +9,9 @@ npm run watch
 
 Port by default 5392
 
+Documentation URL (in case of localhost)
+http://localhost:5392/docs
+
 # Client
 
 ```

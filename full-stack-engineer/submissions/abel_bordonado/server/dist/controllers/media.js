@@ -16,7 +16,7 @@ const fs_extra_1 = __importDefault(require("fs-extra"));
 const path_1 = __importDefault(require("path"));
 const multer_1 = __importDefault(require("multer"));
 const express_validator_1 = require("express-validator");
-const validation_1 = require("../common/utils/validation");
+const validation_1 = require("../libs/validation");
 const mv_1 = __importDefault(require("mv"));
 const mediaLib_1 = require("../libs/mediaLib");
 const Filter = require("node-image-filter");
@@ -66,19 +66,13 @@ router.get("/:key", [express_validator_1.param("key").isString()], (req, res) =>
  *    requestBody:
  *      required: true
  *      content:
- *        application/json:
+ *         multipart/form-data:
  *          schema:
- *            image:
- *              type: String
- *              description: base64 format of the file (even name is image can use for any type of file)
- *              example: DDE
- *              required: true
- *            extension:
- *              type: String
- *              description: Image extensions
- *              required: true
- *              enum: ["png","jpg","jpeg"]
- *              example: png
+ *            type: object
+ *            properties:
+ *              image:
+ *                type: string
+ *                format: binary
  *    responses:
  *      200:
  *        content:
@@ -130,23 +124,28 @@ router.post("/", function (req, res, next) {
  *    description: Apply a Effect over a image
  *    tags:
  *      - media
- *
+ *    parameters:
+ *      - in: path
+ *        name: effect
+ *        required: true
+ *        schema:
+ *          type: string
+ *          description: Must be a valid effect
+ *      - in: path
+ *        name: value
+ *        schema:
+ *          type: number
+ *          description: Some effects accept a value as a strength
  *    requestBody:
  *      required: true
  *      content:
- *        application/json:
+ *         multipart/form-data:
  *          schema:
- *            image:
- *              type: String
- *              description: base64 format of the image
- *              example: DDE
- *              required: true
- *            extension:
- *              type: String
- *              description: Image extensions
- *              required: true
- *              enum: ["png","jpg","jpeg"]
- *              example: png
+ *            type: object
+ *            properties:
+ *              image:
+ *                type: string
+ *                format: binary
  *    responses:
  *      200:
  *        content:

@@ -3,7 +3,7 @@ import fs from "fs-extra";
 import path from "path";
 import multer from "multer";
 import { body, validationResult, query, param } from "express-validator";
-import { errorFormatter } from "../common/utils/validation";
+import { errorFormatter } from "../libs/validation";
 import mv from "mv";
 import { getUniqueName, resolvePictureUriByKey } from "../libs/mediaLib";
 import { resolve } from "bluebird";
@@ -63,19 +63,13 @@ router.get(
  *    requestBody:
  *      required: true
  *      content:
- *        application/json:
+ *         multipart/form-data:
  *          schema:
- *            image:
- *              type: String
- *              description: base64 format of the file (even name is image can use for any type of file)
- *              example: DDE
- *              required: true
- *            extension:
- *              type: String
- *              description: Image extensions
- *              required: true
- *              enum: ["png","jpg","jpeg"]
- *              example: png
+ *            type: object
+ *            properties:
+ *              image:
+ *                type: string
+ *                format: binary
  *    responses:
  *      200:
  *        content:
@@ -142,23 +136,28 @@ router.post(
  *    description: Apply a Effect over a image
  *    tags:
  *      - media
- *
+ *    parameters:
+ *      - in: path
+ *        name: effect
+ *        required: true
+ *        schema:
+ *          type: string
+ *          description: Must be a valid effect
+ *      - in: path
+ *        name: value
+ *        schema:
+ *          type: number
+ *          description: Some effects accept a value as a strength
  *    requestBody:
  *      required: true
  *      content:
- *        application/json:
+ *         multipart/form-data:
  *          schema:
- *            image:
- *              type: String
- *              description: base64 format of the image
- *              example: DDE
- *              required: true
- *            extension:
- *              type: String
- *              description: Image extensions
- *              required: true
- *              enum: ["png","jpg","jpeg"]
- *              example: png
+ *            type: object
+ *            properties:
+ *              image:
+ *                type: string
+ *                format: binary
  *    responses:
  *      200:
  *        content:

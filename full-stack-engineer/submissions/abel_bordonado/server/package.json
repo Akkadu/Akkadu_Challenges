@@ -101,5 +101,12 @@
     "ts-node": "^5.0.0",
     "tslint": "^5.9.1",
     "typescript": "^3.2.2"
-  }
+  },
+  "contributors": [
+    {
+      "name": "Abel Bordonado",
+      "email": "abelbordonado@gmail.com",
+      "url": "https://abelbordonado.wixsite.com/abelbordonado"
+    }
+  ]
 }

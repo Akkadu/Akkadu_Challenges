@@ -114,6 +114,7 @@ export default class UploadImage extends React.PureComponent<
                 <Row type="flex" justify="space-between" align="middle">
                   <img
                     src={image.original}
+                    onClick={() => this.downloadImage(image.original)}
                     alt="original"
                     style={{
                       height: "100px",
@@ -124,6 +125,7 @@ export default class UploadImage extends React.PureComponent<
                   VS
                   <img
                     src={image.url}
+                    onClick={() => this.downloadImage(image.url)}
                     alt="afterEffect"
                     style={{ height: "100px", width: "100px" }}
                   />
@@ -134,5 +136,17 @@ export default class UploadImage extends React.PureComponent<
         </Row>
       </>
     );
+  }
+
+  private async downloadImage(url: string) {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const href = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = href;
+    a.download = "";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
 }

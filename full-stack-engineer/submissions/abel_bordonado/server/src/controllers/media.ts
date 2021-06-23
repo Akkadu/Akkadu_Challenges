@@ -1,14 +1,14 @@
-import { Router, Request, Response, NextFunction } from "express";
-import fs from "fs-extra";
-import path from "path";
-import multer from "multer";
-import { body, validationResult, query, param } from "express-validator";
-import { errorFormatter } from "../libs/validation";
-import mv from "mv";
-import { getUniqueName, resolvePictureUriByKey } from "../libs/mediaLib";
-import { resolve } from "bluebird";
-import { Stream } from "stream";
-const Filter = require("node-image-filter");
+import { Router, Request, Response, NextFunction } from 'express';
+import fs from 'fs-extra';
+import path from 'path';
+import multer from 'multer';
+import { body, validationResult, query, param } from 'express-validator';
+import { errorFormatter } from '../libs/validation';
+import mv from 'mv';
+import { getUniqueName, resolvePictureUriByKey } from '../libs/mediaLib';
+import { resolve } from 'bluebird';
+import { Stream } from 'stream';
+const Filter = require('node-image-filter');
 
 const router = Router();
 // const filterous = require("filterous");
@@ -32,14 +32,14 @@ const router = Router();
  *        description: File download
  */
 router.get(
-  "/:key",
-  [param("key").isString()],
+  '/:key',
+  [param('key').isString()],
   async (req: Request, res: Response) => {
-    console.log("Called media, ", req.params.key);
+    console.log('Called media, ', req.params.key);
     const errors = validationResult(req).formatWith(errorFormatter);
     if (!errors.isEmpty()) {
       return res.status(422).json({
-        err: errors.array().join(" | "),
+        err: errors.array().join(' | '),
       });
     }
 
@@ -82,14 +82,14 @@ router.get(
  *                  description: Image key
  */
 router.post(
-  "/",
+  '/',
   function (req, res, next) {
-    console.log("Multer IN", req.body);
+    console.log('Multer IN', req.body);
 
-    const multerUpload = multer({ dest: "../temp/" }).single("image"); // Param is image but can use for all types
+    const multerUpload = multer({ dest: '../temp/' }).single('image'); // Param is image but can use for all types
 
     multerUpload(req, res, function (err) {
-      console.log("Multer", err);
+      console.log('Multer', err);
       if (err) {
         return res.status(422).json({ err });
       }
@@ -98,30 +98,30 @@ router.post(
   },
 
   async (req: Request, res: Response) => {
-    console.log(" HEEY ", req.body, req.headers, req.file, req.files);
+    console.log(' HEEY ', req.body, req.headers, req.file, req.files);
     try {
       if (!req.file) {
-        return res.status(422).json({ err: "media file cant be empty" });
+        return res.status(422).json({ err: 'media file cant be empty' });
       }
       const date = new Date();
       const folder = `../uploads/${date.getFullYear()}${date.getMonth() + 1}`;
       fs.ensureDir(folder);
 
       const extName = path.extname(req.file.originalname);
-      const newPath = folder + "/" + getUniqueName() + extName;
+      const newPath = folder + '/' + getUniqueName() + extName;
 
       console.log(
         folder,
         newPath,
         extName,
-        newPath.replace("../uploads/", "").replace(/\//gi, "-")
+        newPath.replace('../uploads/', '').replace(/\//gi, '-')
       );
 
       mv(req.file.path, newPath, (err) => console.error(err));
       // fs.renameSync(req.file.path, newPath);
 
       return res.json({
-        key: newPath.replace("../uploads/", "").replace(/\//gi, "-"),
+        key: newPath.replace('../uploads/', '').replace(/\//gi, '-'),
       });
     } catch (err) {
       res.status(500).json({ err: err.toString() });
@@ -170,36 +170,36 @@ router.post(
  *                  description: Image key
  */
 router.post(
-  "/effect",
+  '/effect',
   [
-    multer({ dest: "../temp/" }).single("image"),
-    query("effect").isIn(Object.keys(Filter.preset)),
-    query("value").isInt().optional(),
+    multer({ dest: '../temp/' }).single('image'),
+    query('effect').isIn(Object.keys(Filter.preset)),
+    query('value').isInt().optional(),
   ],
   async (req: Request, res: Response) => {
     const errors = validationResult(req).formatWith(errorFormatter);
     if (!errors.isEmpty()) {
       return res.status(422).json({
-        err: errors.array().join(" | "),
+        err: errors.array().join(' | '),
       });
     }
     try {
       if (!req.file) {
-        return res.status(422).json({ err: "media file cant be empty" });
+        return res.status(422).json({ err: 'media file cant be empty' });
       }
 
       const filter = Filter.preset[req.query.effect];
       if (!filter) {
         return res
           .status(404)
-          .json({ err: "Effect not fond " + req.query.effect });
+          .json({ err: 'Effect not fond ' + req.query.effect });
       }
       const date = new Date();
       const folder = `../uploads/${date.getFullYear()}${date.getMonth() + 1}`;
       fs.ensureDir(folder);
 
       const extName = path.extname(req.file.originalname);
-      const newPath = folder + "/" + getUniqueName() + extName;
+      const newPath = folder + '/' + getUniqueName() + extName;
 
       await new Promise((resolve, reject) =>
         mv(req.file.path, newPath, (err) => {
@@ -257,7 +257,7 @@ router.post(
       // fs.writeFileSync(newPath, buffer);
 
       return res.json({
-        key: newPath.replace("../uploads/", "").replace(/\//gi, "-"),
+        key: newPath.replace('../uploads/', '').replace(/\//gi, '-'),
       });
     } catch (err) {
       res.status(500).json({ err: err.toString() });
@@ -265,8 +265,8 @@ router.post(
   }
 );
 
-router.post("/ping", async (req: Request, res: Response) => {
-  return res.json({ pong: "pong" });
+router.post('/ping', async (req: Request, res: Response) => {
+  return res.json({ pong: 'pong' });
 });
 
 export default router;

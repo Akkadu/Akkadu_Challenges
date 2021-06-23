@@ -1,26 +1,26 @@
-import { Request, Response, NextFunction, Router } from "express";
-import swaggerJSDoc from "swagger-jsdoc";
-import path from "path";
-import * as components from "../common/docs/components";
-import * as parameters from "../common/docs/parameters";
+import { Request, Response, NextFunction, Router } from 'express';
+import swaggerJSDoc from 'swagger-jsdoc';
+import path from 'path';
+import * as components from '../common/docs/components';
+import * as parameters from '../common/docs/parameters';
 // import * as modelComponents from "../config/docs";
 
 const router = Router();
 
 // -- setup up swagger-jsdoc --
 const swaggerDefinition = {
-  openapi: "3.0.1",
+  openapi: '3.0.1',
   components: {},
   parameters: {},
   info: {
-    title: "API Documentation",
-    version: "1.0.0",
-    description: "API Docs for Akkado Server",
+    title: 'API Documentation',
+    version: '1.0.0',
+    description: 'API Docs for Akkado Server',
   },
 };
 const options = {
   swaggerDefinition,
-  apis: [path.resolve(__dirname, "*.js")],
+  apis: [path.resolve(__dirname, '*.js')],
 };
 swaggerDefinition.components = {
   ...swaggerDefinition.components,
@@ -31,12 +31,12 @@ swaggerDefinition.components = {
 swaggerDefinition.parameters = parameters;
 const swaggerSpec = swaggerJSDoc(options);
 
-router.get("/swagger.json", async (req: Request, res: Response) => {
-  res.setHeader("Content-Type", "application/json");
+router.get('/swagger.json', async (req: Request, res: Response) => {
+  res.setHeader('Content-Type', 'application/json');
   res.send(swaggerSpec);
 });
 
-router.get("/", async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   const template = `<!DOCTYPE html>
   <html>
     <head>

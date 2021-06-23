@@ -1,12 +1,12 @@
-import { Icon, message, Progress, Tag } from "antd";
+import { Icon, message, Progress, Tag } from 'antd';
 
-import * as React from "react";
-import Dragger from "antd/lib/upload/Dragger";
-import { RcFile } from "antd/lib/upload";
-import { RcCustomRequestOptions } from "antd/lib/upload/interface";
-import moment from "moment";
-import { Service } from "../../../services/Service";
-import { FILTERS } from "../../../models/Filters";
+import * as React from 'react';
+import Dragger from 'antd/lib/upload/Dragger';
+import { RcFile } from 'antd/lib/upload';
+import { RcCustomRequestOptions } from 'antd/lib/upload/interface';
+import moment from 'moment';
+import { Service } from '../../../services/Service';
+import { FILTERS } from '../../../models/Filters';
 
 interface InternalProps {
   dragAreaHeight?: number;
@@ -50,7 +50,7 @@ class DragImage extends React.Component<InternalProps, InternalState> {
       <React.Fragment>
         <Dragger
           height={this.props.dragAreaHeight}
-          name={"image"}
+          name={'image'}
           multiple={true}
           beforeUpload={async (file: RcFile, fileList: RcFile[]) =>
             this.beforeUpload(file, fileList)
@@ -61,12 +61,12 @@ class DragImage extends React.Component<InternalProps, InternalState> {
           onChange={(info: any) => {
             // console.log(info);
             const { status } = info.file;
-            if (status !== "uploading") {
+            if (status !== 'uploading') {
               console.log(info.file, info.fileList);
             }
-            if (status === "done") {
+            if (status === 'done') {
               message.success(`${info.file.name} file uploaded successfully.`);
-            } else if (status === "error") {
+            } else if (status === 'error') {
               message.error(`${info.file.name} file upload failed.`);
             }
           }}
@@ -80,7 +80,7 @@ class DragImage extends React.Component<InternalProps, InternalState> {
             <Tag color="blue">{this.filterName}</Tag>
           </p>
 
-          <div style={{ padding: "12px" }}>
+          <div style={{ padding: '12px' }}>
             {percentage > -1 && (
               <Progress percent={+(percentage * 100).toFixed()} />
             )}
@@ -95,7 +95,7 @@ class DragImage extends React.Component<InternalProps, InternalState> {
       (filter) => filter.effect === this.props.effectName
     );
     if (!filter) {
-      return "";
+      return '';
     }
     return filter.title;
   }
@@ -112,7 +112,7 @@ class DragImage extends React.Component<InternalProps, InternalState> {
     this.images.push({
       id: file.uid,
       original: URL.createObjectURL(file),
-      url: "",
+      url: '',
       loading: true,
     });
 
@@ -131,8 +131,8 @@ class DragImage extends React.Component<InternalProps, InternalState> {
 
     console.log(
       options.file.name,
-      moment().format("HH:mm:ss"),
-      "Upload File",
+      moment().format('HH:mm:ss'),
+      'Upload File',
       key
     );
 
@@ -144,7 +144,7 @@ class DragImage extends React.Component<InternalProps, InternalState> {
       return;
     }
 
-    if (key === "") {
+    if (key === '') {
       this.images[fileIndex].failed = true;
     } else {
       this.images[fileIndex].url = key;
@@ -155,7 +155,7 @@ class DragImage extends React.Component<InternalProps, InternalState> {
     this.setState({ images: [...this.images] });
     this.props.onLoad && this.props.onLoad(this.images[fileIndex]);
     this.endLoadingPics();
-    console.log("Uploaded ", key, this.images);
+    console.log('Uploaded ', key, this.images);
     return;
   }
 

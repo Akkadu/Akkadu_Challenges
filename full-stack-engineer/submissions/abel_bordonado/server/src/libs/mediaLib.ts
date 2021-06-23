@@ -1,19 +1,19 @@
-import fs from "fs-extra";
-import path from "path";
+import fs from 'fs-extra';
+import path from 'path';
 
 export const getUniqueName = () => {
   return (
-    "I" + Date.now().toString(36) + Math.random().toString(36).substr(2, 9)
+    'I' + Date.now().toString(36) + Math.random().toString(36).substr(2, 9)
   );
 };
 
 export const resolvePictureUriByKey = (pic: string) => {
-  const realPath = path.resolve("../uploads/" + pic.replace(/\-/g, "/"));
+  const realPath = path.resolve('../uploads/' + pic.replace(/\-/g, '/'));
   console.log({ realPath });
   if (!fs.existsSync(realPath)) {
     return {
       code: 404,
-      content: { err: "Picture not found on server." },
+      content: { err: 'Picture not found on server.' },
     };
   }
 

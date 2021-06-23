@@ -1,9 +1,9 @@
-import * as HttpStatus from "http-status-codes";
+import * as HttpStatus from 'http-status-codes';
 // import { isDEV } from "./../config/env";
 //import { ServerEnv, EnvName } from '../config/env';
-import * as _ from "lodash";
-import { isArray } from "util";
-export const TOKEN_HEADER: string = "BEARER ";
+import * as _ from 'lodash';
+import { isArray } from 'util';
+export const TOKEN_HEADER: string = 'BEARER ';
 //const ENV_DEV = ServerEnv.envName === EnvName.Development;
 export type HttpResponse<T> = {
   content?: T;
@@ -22,7 +22,7 @@ export const post = async <T>(
   // isDEV && console.info("POST ", url, params);
   try {
     const response = await fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: getHeaders(headers),
       body: JSON.stringify(params),
     });
@@ -30,8 +30,8 @@ export const post = async <T>(
     // isDEV && console.info("POST Response:", response, content);
     return content;
   } catch (err) {
-    console.log("Error on fetch", err);
-    return { status: 500, error: err, errorMessage: "" }; // 499
+    console.log('Error on fetch', err);
+    return { status: 500, error: err, errorMessage: '' }; // 499
   }
 };
 
@@ -43,7 +43,7 @@ export const postFormData = async <T>(
   // isDEV && console.info("POST ", url, params);
   try {
     const response = await fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: getFormDataHeaders(headers),
       body: formData,
     });
@@ -51,8 +51,8 @@ export const postFormData = async <T>(
     // isDEV && console.info("POST Response:", response, content);
     return content;
   } catch (err) {
-    console.log("Error on fetch", err);
-    return { status: 500, error: err, errorMessage: "" }; // 499
+    console.log('Error on fetch', err);
+    return { status: 500, error: err, errorMessage: '' }; // 499
   }
 };
 export const deleteUndefined = (list: any) => {
@@ -73,9 +73,9 @@ export const valueToArray = <T = string>(value: T | T[] | undefined) => {
 
 const getHeaders = (customHeaders: object) => {
   const headers = {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-    Authorization: "",
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    Authorization: '',
   };
   // if (getToken()) {
   //   headers.Authorization = TOKEN_HEADER + getToken() || "";
@@ -87,8 +87,8 @@ const getHeaders = (customHeaders: object) => {
 
 const getFormDataHeaders = (customHeaders: object) => {
   const headers = {
-    Accept: "application/json",
-    Authorization: "",
+    Accept: 'application/json',
+    Authorization: '',
   };
   // if (getToken()) {
   //   headers.Authorization = TOKEN_HEADER + getToken() || "";
@@ -99,7 +99,7 @@ const getFormDataHeaders = (customHeaders: object) => {
 };
 export const paramsToUriQuery = (params: any): string => {
   if (!params || !Object.keys(params).length) {
-    return "";
+    return '';
   }
 
   return _(Object.keys(params))
@@ -110,7 +110,7 @@ export const paramsToUriQuery = (params: any): string => {
         : `${key}=${params[key]}`
     )
     .flatten()
-    .join("&");
+    .join('&');
 };
 
 export const get = async <T>(
@@ -119,10 +119,10 @@ export const get = async <T>(
   headers: object = {}
 ): Promise<HttpResponse<T>> => {
   // isDEV && console.info("GET ", url + paramsToUriQuery(params));
-  const question = url.includes("?") ? "&" : "?";
+  const question = url.includes('?') ? '&' : '?';
   try {
     const response = await fetch(url + question + paramsToUriQuery(params), {
-      method: "GET",
+      method: 'GET',
       headers: getHeaders(headers),
     });
     const content = await parseResponse<T>(response);
@@ -130,11 +130,11 @@ export const get = async <T>(
 
     return content;
   } catch (err) {
-    console.log("Error on fetch", err);
+    console.log('Error on fetch', err);
     return {
       status: 500,
       error: err,
-      errorMessage: "",
+      errorMessage: '',
     };
   }
 };
@@ -160,8 +160,8 @@ const parseResponse = <T>(response: Response): Promise<HttpResponse<T>> => {
     if (!content) {
       resolve({
         status,
-        error: "Internal Server Error",
-        errorMessage: "内部服务器错误",
+        error: 'Internal Server Error',
+        errorMessage: '内部服务器错误',
       });
     }
 

@@ -1,0 +1,30 @@
+#Review Object
+type review {
+    id : ID!
+    name : String!
+    rating : Int!
+    review : String!
+    timestamp : String! 
+}
+
+type Query {
+
+    #Find all reviews
+    allReview:[review!]!
+
+    #Find single review
+    singleReview(id:ID!) : review!
+
+}
+
+type Mutation { 
+
+    #Post review
+    post(name:String!,rating:Int!,review:String!,Timestamp:String!):review!
+
+    #Update review
+    update(id:ID!,name:String!,rating:Int!,review:String!,Timestamp:String!):review
+
+    #Delete review data
+    delete(id:ID!):review
+}

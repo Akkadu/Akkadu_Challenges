@@ -1,3 +1,8 @@
+/*
+*Name : API reviews
+*Author : Mike Mwambia
+*Date : 18th February 2021
+*/
 const { ApolloServer }  = require('apollo-server');
 const mongoose = require('mongoose');
 const fs = require('fs');

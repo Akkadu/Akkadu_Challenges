@@ -1,5 +1,10 @@
+/*
+*Exports the Mutations and Query functions
+*Methods invoked from Mongoose ORM
+*Author Mike Mwambia
+*Date : 18th Feb 2021
+*/
 const reviewSchema = require('../../models/review');
-//CRUD applications
 module.exports = {
     //Document Modifications
     Mutation : {

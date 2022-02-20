@@ -1,4 +1,6 @@
 #Review Object
+#Type Definations for GraphQl
+
 type review {
     id : ID!
     name : String!

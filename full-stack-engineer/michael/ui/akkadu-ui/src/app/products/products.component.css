@@ -1,0 +1,9 @@
+.product-card {
+    max-width: 400px;
+    margin: 15px;
+  }
+  
+  .product-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }

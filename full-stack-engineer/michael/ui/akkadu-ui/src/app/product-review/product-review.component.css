@@ -1,0 +1,11 @@
+
+.single-product {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    align-content: center;
+    display: flex;
+    flex-flow: column;
+    margin: 15px;
+}
+

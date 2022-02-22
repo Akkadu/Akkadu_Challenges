@@ -7,6 +7,7 @@ type review {
     rating : Int!
     review : String!
     timestamp : String! 
+    imageUrl: String!
 }
 
 type Query {

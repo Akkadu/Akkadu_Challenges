@@ -1,11 +1,11 @@
 export interface reviews {
-    id : Number;
+    id : number;
     name : String;
     rating : Number;
-    review : String;
-    timestamp : Number;
+    review : string;
+    timestamp : number;
     imageUrl: String;
     productName : String;
-    noofReview : Number
+    noofReview : number
 }
 

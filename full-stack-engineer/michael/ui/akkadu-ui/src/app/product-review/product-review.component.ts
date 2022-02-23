@@ -12,7 +12,7 @@ export class ProductReviewComponent implements OnInit {
     id : 1,
     name : 'Mike the reviewer',
     rating : 5,
-    review : 'Very good yet not so good',
+    review : 'Very good yet not so good hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',
     timestamp : new Date().getTime(),
     imageUrl: 'https://via.placeholder.com/50',
     productName : 'Unga wa jogoo',

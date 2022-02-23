@@ -9,3 +9,17 @@
     margin: 15px;
 }
 
+.review-card {
+    
+    margin: 10px;
+  }
+
+.form-class {
+    min-width: 150px;
+    max-width : 400px;
+    width: 100%;
+}
+
+.form-class-full-width {
+    width: 100%;
+}

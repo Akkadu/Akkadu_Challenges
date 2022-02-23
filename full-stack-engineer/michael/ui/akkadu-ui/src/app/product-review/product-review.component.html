@@ -1,22 +1,115 @@
 <mat-grid-list cols="4">
     <mat-grid-tile colspan="2" rowspan="1">
       <div class="single-product">
-      <div style="width: 100%;height: 10%;">This is the title</div>
+      <div style="width: 100%;height: 10%;"><h1>This is the title</h1></div>
       <div style="width: 100%;height: 70%;align-items: center;margin: 5px">
       <img src={{review.imageUrl}} style="width: 350px;height: 350px;align-self: center;margin-bottom: 5px;">
       <br>
       </div>
       <div style="width: 100%;height: 20%;align-items: bottom;margin: 10px;">
-        <br>
-      <p>Number of reviews is : - 0</p>
+      <h3>Number of reviews is : - <span>0</span></h3>
+      <p>Current date is :- {{review.timestamp | date}}</p>
       </div>
       </div>
     </mat-grid-tile>
     
-    <mat-grid-tile colspan="2" rowspan="2" style="background-color: red;">Reviews section</mat-grid-tile>
+    <mat-grid-tile colspan="2" rowspan="2">
+    <div class="single-product">
+      <mat-card class="review-card">
+        <mat-card-title>{{review.name}}</mat-card-title>
+        <mat-card-subtitle>{{review.timestamp | date}}</mat-card-subtitle>
+        <mat-card-content>
+          <p>{{review.review}}</p>
+          <p>Rating : - {{review.rating}} out of 10</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="review-card">
+        <mat-card-title>{{review.name}}</mat-card-title>
+        <mat-card-subtitle>{{review.timestamp | date}}</mat-card-subtitle>
+        <mat-card-content>
+          <p>{{review.review}}</p>
+          <p>Rating : - {{review.rating}} out of 10</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="review-card">
+        <mat-card-title>{{review.name}}</mat-card-title>
+        <mat-card-subtitle>{{review.timestamp | date}}</mat-card-subtitle>
+        <mat-card-content>
+          <p>{{review.review}}</p>
+          <p>Rating : - {{review.rating}} out of 10</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="review-card">
+        <mat-card-title>{{review.name}}</mat-card-title>
+        <mat-card-subtitle>{{review.timestamp | date}}</mat-card-subtitle>
+        <mat-card-content>
+          <p>{{review.review}}</p>
+          <p>Rating : - {{review.rating}} out of 10</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="review-card">
+        <mat-card-title>{{review.name}}</mat-card-title>
+        <mat-card-subtitle>{{review.timestamp | date}}</mat-card-subtitle>
+        <mat-card-content>
+          <p>{{review.review}}</p>
+          <p>Rating : - {{review.rating}} out of 10</p>
+        </mat-card-content>
+      </mat-card>
+ 
+      <mat-card class="review-card">
+        <mat-card-title>{{review.name}}</mat-card-title>
+        <mat-card-subtitle>{{review.timestamp | date}}</mat-card-subtitle>
+        <mat-card-content>
+          <p>{{review.review}}</p>
+          <p>Rating : - {{review.rating}} out of 10</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    </mat-grid-tile>
     
-    <mat-grid-tile colspan="2" rowspan="1" style="background-color: orange;">
-    
+    <mat-grid-tile colspan="2" rowspan="1">
+    <div class="single-product">
+    <div>
+      <h3>Enter reviews for the product above</h3>
+    </div>
+    <div>
+      <form class="form-class">
+      <mat-form-field appearance="fill" class="form-class-full-width">
+        <mat-label>Enter your name</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form-class-full-width">
+        <mat-label>Leave a review</mat-label>
+        <textarea matInput placeholder="Ex.Leave us a review to imporve the product..."></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form-class-full-width">
+        <mat-label>Select rating out of 10 (With 10 being the greatest)</mat-label>
+        <mat-select>
+          <mat-option value="one">1</mat-option>
+          <mat-option value="two">2</mat-option>
+          <mat-option value="two">3</mat-option>
+          <mat-option value="two">4</mat-option>
+          <mat-option value="two">5</mat-option>
+          <mat-option value="two">6</mat-option>
+          <mat-option value="two">7</mat-option>
+          <mat-option value="two">8</mat-option>
+          <mat-option value="two">9</mat-option>
+          <mat-option value="two">10</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-raised-button type="submit" color="primary">Send Review</button>
+      </mat-card-actions>
+      </form>
+    </div>
+    <p>
+      <a mat-button href="/">Products</a>
+    </p>
+    </div>
     </mat-grid-tile>
     
   </mat-grid-list>

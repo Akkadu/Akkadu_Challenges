@@ -6,7 +6,7 @@ const { model,Schema } = require('mongoose');
 const reviewSchema = new Schema ({
     name : String,
     rating : Number,
-    review : String,
+    reviewNote : String,
     timestamp : String
 })
 

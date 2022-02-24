@@ -4,7 +4,7 @@
 *Author Mike Mwambia
 *Date : 18th Feb 2021
 */
-const reviewSchema = require('../../models/review');
+const reviewSchema = require('../../models/reviews');
 module.exports = {
     //Document Modifications
     Mutation : {
@@ -12,7 +12,7 @@ module.exports = {
             const newReview = new reviewSchema({
                 name : args.name,
                 rating : args.rating,
-                review : args.review,
+                reviewNote : args.reviewNote,
                 timestamp : args.timestamp
             })
             const res = await newReview.save();
@@ -24,7 +24,7 @@ module.exports = {
         async update(_,args) {
             try{
                 return await reviewSchema.findOneAndUpdate({_id:args.id},{name:args.name},
-                    {rating:args.rating},{review:args.review},{timestamp:args.timestamp})
+                    {rating:args.rating},{reviewNote:args.review},{timestamp:args.timestamp})
             }catch(err){
                 return err
             }
@@ -44,12 +44,25 @@ module.exports = {
     //Document Queries 
     Queries : {
         //All review
-        allReview : async (_,args)=>{
+        allReview : async ()=>{
+            let allReview = await reviewSchema.find().then((err,data)=>{
+                if(err){
+                    console.log(err)
+                    return err;
+                }else{
+                    console.log(data)
+                    return data
+                }
+            })
+
+            return allReview;
+
+            /*
             try{
                 return await reviewSchema.find()
             }catch(err){
                 return err
-            }
+            }*/ 
         },
         //Single review
         singleReview : async (_,args)=>{

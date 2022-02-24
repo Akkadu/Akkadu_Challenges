@@ -1,0 +1,19 @@
+<mat-card class="product-card">
+    <mat-card-header>
+      <div mat-card-avatar class="product-header-image"></div>
+      <mat-card-title>{{review.productName}} Details</mat-card-title>
+      <mat-card-subtitle>{{review.id}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src={{review.imageUrl}} alt="Photo of the product">
+    <mat-card-content>
+      <p>
+        Number of review : - {{review.noofReview}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <a routerLink="/product-review/{{review.id}}">
+        <button mat-stroked-button color="primary">Add Review</button>
+      </a>
+    </mat-card-actions>
+  </mat-card>
+  

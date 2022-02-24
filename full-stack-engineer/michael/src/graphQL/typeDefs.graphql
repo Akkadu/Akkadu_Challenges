@@ -1,0 +1,32 @@
+#Review Object
+#Type Definations for GraphQl
+
+type review {
+    _id : ID!
+    name : String!
+    rating : Int!
+    reviewNote : String!
+    timestamp : String!
+}
+
+type Query {
+
+    #Find all reviews
+    allReview:[review!]!
+
+    #Find single review
+    singleReview(_id:ID!) : review!
+
+}
+
+type Mutation { 
+
+    #Post review
+    post(name:String!,rating:Int!,reviewNote:String!,timestamp:String!):review!
+
+    #Update review
+    update(_id:ID!,name:String!,rating:Int!,reviewNote:String!,timestamp:String!):review
+
+    #Delete review data
+    delete(_id:ID!):review
+}

@@ -1,0 +1,24 @@
+{
+    "development": {
+        "config_id": "development",
+        "app_name": "County Assembly Network",
+        "app_desc": "County Assembly Digital Filling System",
+        "node_port": 3200,
+        "json_indentation": 4,
+        "database": "mongodb://localhost:27017/counties"
+    },
+    "testing": {
+        "config_id": "testing",
+        "database": "mongodb://localhost:27017/counties"
+    },
+    "staging": {
+        "config_id": "staging",
+        "node_port": 8080,
+        "database": "mongodb://localhost:27017/counties"
+    },
+    "production": {
+        "config_id": "production",
+        "node_port": 8080,
+        "database": "nainchu.countyassemblynetwork.com"
+    }
+}

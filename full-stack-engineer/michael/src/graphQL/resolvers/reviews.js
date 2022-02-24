@@ -45,24 +45,11 @@ module.exports = {
     Queries : {
         //All review
         allReview : async ()=>{
-            let allReview = await reviewSchema.find().then((err,data)=>{
-                if(err){
-                    console.log(err)
-                    return err;
-                }else{
-                    console.log(data)
-                    return data
-                }
-            })
-
-            return allReview;
-
-            /*
             try{
                 return await reviewSchema.find()
             }catch(err){
                 return err
-            }*/ 
+            }
         },
         //Single review
         singleReview : async (_,args)=>{

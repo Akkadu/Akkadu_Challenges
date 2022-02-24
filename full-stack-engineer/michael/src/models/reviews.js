@@ -10,4 +10,4 @@ const reviewSchema = new Schema ({
     timestamp : String
 })
 
-module.exports = model('review',reviewSchema);
+module.exports = model('reviews',reviewSchema);

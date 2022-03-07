@@ -12,6 +12,13 @@ switch (process.env.NODE_ENV) {
       type: 'postgres',
       url: 'postgresql://xiaoxiayao:1234@localhost/product_review_qa',
       entities: ['**/*.entity.js'],
+    });
+    break;
+  case 'test':
+    Object.assign(dbConfig, {
+      type: 'postgres',
+      url: 'postgresql://xiaoxiayao:1234@localhost/product_review_test',
+      entities: ['**/*.entity.js'],
       migrationsRun: true,
     });
     break;

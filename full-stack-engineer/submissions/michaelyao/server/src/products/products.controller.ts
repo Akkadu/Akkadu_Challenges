@@ -9,6 +9,7 @@ import { CreateReviewDto } from './dto/create-review.dto';
 import { User } from '../users/entities/user.entity';
 import { Serialize } from '../interceptors/serialize.interceptors';
 import { ReviewDto } from './dto/review.dto';
+import { ListReviewsResponseDto } from './dto/list-review-response.dto';
 
 @Controller('products')
 export class ProductsController {
@@ -37,5 +38,11 @@ export class ProductsController {
     @CurrentUser() user: User,
   ) {
     return this.reviewsService.create(createReviewDto, user, parseInt(id));
+  }
+
+  @Get('/:id/reviews')
+  @Serialize(ListReviewsResponseDto)
+  listReviews(@Param('id') id: string) {
+    return this.reviewsService.findAll(parseInt(id));
   }
 }

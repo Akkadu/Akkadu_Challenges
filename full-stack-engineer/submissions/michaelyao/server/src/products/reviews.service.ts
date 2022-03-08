@@ -26,8 +26,16 @@ export class ReviewsService {
     return this.reviewRepo.save(review);
   }
 
-  findAll() {
-    return `This action returns all reviews`;
+  async findAll(product_id: number) {
+    const reviews = await this.reviewRepo.find({
+      where: {
+        product: {
+          id: product_id,
+        },
+      },
+      relations: ['user', 'product'],
+    });
+    return reviews;
   }
 
   findOne(id: number) {

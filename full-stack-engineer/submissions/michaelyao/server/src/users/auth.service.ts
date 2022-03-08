@@ -18,7 +18,7 @@ export class AuthService {
     const users = await this.usersService.find(username);
     if (users.length) {
       throw new BadRequestException(
-        'This username is in use already. Please use another one.',
+        'This username is in use already. Please use another one',
       );
     }
 
@@ -36,6 +36,23 @@ export class AuthService {
     const user = await this.usersService.create(username, result);
 
     // return the user
+    return user;
+  }
+
+  async signin(username: string, password: string) {
+    const [user] = await this.usersService.find(username);
+    if (!user) {
+      throw new NotFoundException('user not found');
+    }
+
+    const [salt, storedHash] = user.password.split('.');
+
+    const hash = (await scrypt(password, salt, 32)) as Buffer;
+
+    if (storedHash !== hash.toString('hex')) {
+      throw new BadRequestException('wrong password');
+    }
+
     return user;
   }
 }

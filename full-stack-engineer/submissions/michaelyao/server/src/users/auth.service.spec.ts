@@ -69,7 +69,7 @@ describe('AuthService', () => {
       await service.signup(username, password);
     } catch (err) {
       expect(err).toBeInstanceOf(BadRequestException);
-      let error = err as BadRequestException;
+      const error = err as BadRequestException;
       expect(error.message).toEqual(
         'This username is in use already. Please use another one',
       );
@@ -87,7 +87,7 @@ describe('AuthService', () => {
       await service.signin(username, password);
     } catch (err) {
       expect(err).toBeInstanceOf(NotFoundException);
-      let error = err as NotFoundException;
+      const error = err as NotFoundException;
       expect(error.message).toEqual('user not found');
     }
   });
@@ -110,7 +110,7 @@ describe('AuthService', () => {
       await service.signin(username, password);
     } catch (err) {
       expect(err).toBeInstanceOf(BadRequestException);
-      let error = err as BadRequestException;
+      const error = err as BadRequestException;
       expect(error.message).toEqual('wrong password');
     }
   });

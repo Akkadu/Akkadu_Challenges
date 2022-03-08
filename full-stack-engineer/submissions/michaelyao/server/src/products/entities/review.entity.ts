@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm';
-import { Product } from './product.entity';
+import { Product } from '../../products/entities/product.entity';
 import { User } from '../../users/entities/user.entity';
 
 @Entity()

@@ -1,21 +1,21 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  UseGuards,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, UseGuards } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
 import { AdminGuard } from '../guards/admin.guards';
+import { CurrentUser } from '../users/current-user.decorator';
+import { AuthGuard } from '../guards/auth.guards';
+import { ReviewsService } from './reviews.service';
+import { CreateReviewDto } from './dto/create-review.dto';
+import { User } from '../users/entities/user.entity';
+import { Serialize } from '../interceptors/serialize.interceptors';
+import { ReviewDto } from './dto/review.dto';
 
 @Controller('products')
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(
+    private readonly productsService: ProductsService,
+    private readonly reviewsService: ReviewsService,
+  ) {}
 
   @Post()
   @UseGuards(AdminGuard)
@@ -28,8 +28,14 @@ export class ProductsController {
     return this.productsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.productsService.findOne(+id);
+  @Post('/:id/reviews')
+  @UseGuards(AuthGuard)
+  @Serialize(ReviewDto)
+  createReview(
+    @Param('id') id: string,
+    @Body() createReviewDto: CreateReviewDto,
+    @CurrentUser() user: User,
+  ) {
+    return this.reviewsService.create(createReviewDto, user, parseInt(id));
   }
 }

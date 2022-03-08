@@ -6,7 +6,6 @@ import {
   Session,
   UseGuards,
 } from '@nestjs/common';
-import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { AuthService } from './auth.service';
 import { Serialize } from '../interceptors/serialize.interceptors';
@@ -18,10 +17,7 @@ import { AuthGuard } from '../guards/auth.guards';
 @Controller('auth')
 @Serialize(UserDto)
 export class UsersController {
-  constructor(
-    private readonly usersService: UsersService,
-    private authService: AuthService,
-  ) {}
+  constructor(private authService: AuthService) {}
 
   @Post('/signup')
   async createUser(@Body() body: CreateUserDto, @Session() session: any) {

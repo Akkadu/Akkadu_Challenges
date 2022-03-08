@@ -14,6 +14,8 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { AuthService } from './auth.service';
 import { Serialize } from '../interceptors/serialize.interceptors';
 import { UserDto } from './dto/user.dto';
+import { CurrentUser } from './current-user.decorator';
+import { User } from './entities/user.entity';
 
 @Controller('auth')
 @Serialize(UserDto)
@@ -35,5 +37,15 @@ export class UsersController {
     const user = await this.authService.signin(body.username, body.password);
     session.userId = user.id;
     return user;
+  }
+
+  @Get('/currentUser')
+  whoAmI(@CurrentUser() user: User) {
+    return user;
+  }
+
+  @Post('/signout')
+  signOut(@Session() session: any) {
+    session.userId = null;
   }
 }

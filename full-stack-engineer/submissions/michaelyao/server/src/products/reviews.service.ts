@@ -1,4 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import {
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateReviewDto } from './dto/create-review.dto';
 import { UpdateReviewDto } from './dto/update-review.dto';
@@ -15,9 +19,9 @@ export class ReviewsService {
   ) {}
 
   async create(
-    createReviewDto: CreateReviewDto,
     user: User,
     product_id: number,
+    createReviewDto: CreateReviewDto,
   ) {
     const review = this.reviewRepo.create(createReviewDto);
     const product = await this.productRepo.findOne(product_id);
@@ -38,12 +42,25 @@ export class ReviewsService {
     return reviews;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} review`;
-  }
-
-  update(id: number, updateReviewDto: UpdateReviewDto) {
-    return `This action updates a #${id} review`;
+  async update(
+    user: User,
+    review_id: number,
+    updateReviewDto: UpdateReviewDto,
+  ) {
+    const [review] = await this.reviewRepo.find({
+      where: {
+        id: review_id,
+      },
+      relations: ['user', 'product'],
+    });
+    if (!review) {
+      throw new NotFoundException('review not found');
+    }
+    if (user.id != review.user.id) {
+      throw new ForbiddenException('you can only edit your review');
+    }
+    Object.assign(review, updateReviewDto);
+    return this.reviewRepo.save(review);
   }
 
   remove(id: number) {

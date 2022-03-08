@@ -15,9 +15,6 @@ export class Review {
   id: number;
 
   @Column()
-  name: string;
-
-  @Column()
   rating: number;
 
   @Column()

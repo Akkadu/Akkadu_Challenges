@@ -20,3 +20,6 @@ export const signout = () => axios.post('/auth/signout/');
 export const currentUser = () => axios.get('/auth/currentUser/');
 
 export const listProducts = () => axios.get('/products/');
+
+export const listReviews = (productId) =>
+  axios.get(`/products/${productId}/reviews`);

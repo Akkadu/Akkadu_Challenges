@@ -8,7 +8,7 @@ import {
   Box,
 } from '@mui/material';
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product, handleClick }) => {
   return (
     <Box mb={2}>
       <Card sx={{ minWidth: 275 }}>
@@ -18,7 +18,9 @@ const ProductItem = ({ product }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Learn More</Button>
+          <Button size="small" onClick={() => handleClick(product)}>
+            Learn More
+          </Button>
         </CardActions>
       </Card>
     </Box>

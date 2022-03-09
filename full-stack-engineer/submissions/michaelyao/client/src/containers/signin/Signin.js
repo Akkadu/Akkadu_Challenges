@@ -7,9 +7,10 @@ import {
   Paper,
   Button,
   Alert,
+  Link,
 } from '@mui/material';
 import { signin } from '../../Api';
-import { useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { APPLICATION_ROUTES } from '../../Constants';
 import { AuthContext } from '../../contexts/authContext';
 
@@ -73,7 +74,12 @@ const Signin = () => {
                 Sign In
               </Button>
             </Box>
-            <Box py={1.5}>Don't have an account? Go to Signup</Box>
+            <Box py={1.5}>
+              {"Don't have an account? Go to "}
+              <Link component={RouterLink} to={APPLICATION_ROUTES.SIGNUP}>
+                Signup
+              </Link>
+            </Box>
           </Box>
         </Paper>
       </Box>

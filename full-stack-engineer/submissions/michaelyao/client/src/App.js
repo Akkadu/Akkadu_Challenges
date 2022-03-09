@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { CssBaseline } from '@mui/material';
-import Header from './components/header/Header';
 import AppRoutes from './AppRoutes';
 import { AuthContext } from './contexts/authContext';
 import { currentUser } from './Api';
@@ -13,6 +12,7 @@ function App() {
   };
 
   useEffect(() => {
+    // When the app is lauched, let's check the user is signed in or not.
     const fetchData = async () => {
       try {
         const { data } = await currentUser();
@@ -25,7 +25,6 @@ function App() {
   return (
     <AuthContext.Provider value={value}>
       <CssBaseline />
-      <Header />
       <AppRoutes />
     </AuthContext.Provider>
   );

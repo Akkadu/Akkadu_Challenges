@@ -11,6 +11,7 @@ import {
   Stack,
 } from '@mui/material';
 import { AuthContext } from '../../contexts/authContext';
+import { DateTime } from 'luxon';
 
 const ReviewItem = ({ review }) => {
   const { user } = useContext(AuthContext);
@@ -52,6 +53,13 @@ const ReviewItem = ({ review }) => {
               <Typography variant="body" component="div">
                 {review.text}
               </Typography>
+              <Grid container direction="row" justifyContent="flex-end">
+                <Typography variant="caption" component="div">
+                  {DateTime.fromISO(review.createdAt).toLocaleString(
+                    DateTime.DATETIME_MED,
+                  )}
+                </Typography>
+              </Grid>
             </Box>
           </Grid>
         </CardContent>

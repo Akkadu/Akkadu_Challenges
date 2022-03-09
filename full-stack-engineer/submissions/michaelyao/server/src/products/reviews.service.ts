@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   ForbiddenException,
   Injectable,
   NotFoundException,
@@ -23,8 +24,23 @@ export class ReviewsService {
     product_id: number,
     createReviewDto: CreateReviewDto,
   ) {
+    const [product] = await this.productRepo.find({
+      where: {
+        id: product_id,
+      },
+      relations: ['reviews'],
+    });
+    if (!product) {
+      throw new NotFoundException('product not found');
+    }
+    const reviewUserIds = product.reviews.map((review) => review.user.id);
+    if (reviewUserIds.includes(user.id)) {
+      throw new BadRequestException(
+        'you have already created an review for the product',
+      );
+    }
+
     const review = this.reviewRepo.create(createReviewDto);
-    const product = await this.productRepo.findOne(product_id);
     review.product = product;
     review.user = user;
     return this.reviewRepo.save(review);
@@ -37,7 +53,7 @@ export class ReviewsService {
           id: product_id,
         },
       },
-      relations: ['user', 'product'],
+      relations: ['product'],
     });
     return reviews;
   }
@@ -51,13 +67,13 @@ export class ReviewsService {
       where: {
         id: review_id,
       },
-      relations: ['user', 'product'],
+      relations: ['product'],
     });
     if (!review) {
       throw new NotFoundException('review not found');
     }
     if (user.id != review.user.id) {
-      throw new ForbiddenException('you can only edit your review');
+      throw new BadRequestException('you can only edit your review');
     }
     Object.assign(review, updateReviewDto);
     return this.reviewRepo.save(review);

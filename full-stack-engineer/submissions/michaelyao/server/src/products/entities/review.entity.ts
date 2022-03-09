@@ -23,7 +23,7 @@ export class Review {
   @ManyToOne(() => Product, (product) => product.reviews)
   product: Product;
 
-  @ManyToOne(() => User, (user) => user.reviews)
+  @ManyToOne(() => User, (user) => user.reviews, { eager: true })
   user: User;
 
   @CreateDateColumn({

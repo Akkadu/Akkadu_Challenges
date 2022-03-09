@@ -1,6 +1,6 @@
 export const APPLICATION_ROUTES = {
   ROOT: '/',
-  LOGIN: '/signin',
-  SIGNUP: '/signup',
-  PRODUCT: '/product',
+  SIGNIN: 'signin',
+  SIGNUP: 'signup',
+  PRODUCT: 'product',
 };

@@ -6,6 +6,7 @@ import {
   Param,
   UseGuards,
   Patch,
+  Delete,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
@@ -63,5 +64,12 @@ export class ProductsController {
     @CurrentUser() user: User,
   ) {
     return this.reviewsService.update(user, parseInt(id), updateReviewDto);
+  }
+
+  @Delete('/:product_id/reviews/:id')
+  @UseGuards(AuthGuard)
+  @Serialize(ReviewDto)
+  deleteReview(@Param('id') id: string, @CurrentUser() user: User) {
+    return this.reviewsService.remove(user, parseInt(id));
   }
 }

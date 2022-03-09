@@ -73,13 +73,25 @@ export class ReviewsService {
       throw new NotFoundException('review not found');
     }
     if (user.id != review.user.id) {
-      throw new BadRequestException('you can only edit your review');
+      throw new BadRequestException('you can only edit your reviews');
     }
     Object.assign(review, updateReviewDto);
     return this.reviewRepo.save(review);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} review`;
+  async remove(user: User, review_id: number) {
+    const [review] = await this.reviewRepo.find({
+      where: {
+        id: review_id,
+      },
+      relations: ['product'],
+    });
+    if (!review) {
+      throw new NotFoundException('review not found');
+    }
+    if (user.id != review.user.id) {
+      throw new BadRequestException('you can only delete your reviews');
+    }
+    return this.reviewRepo.remove(review);
   }
 }

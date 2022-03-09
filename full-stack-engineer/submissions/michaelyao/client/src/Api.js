@@ -18,3 +18,5 @@ export const signin = ({ username, password }) =>
 export const signout = () => axios.post('/auth/signout/');
 
 export const currentUser = () => axios.get('/auth/currentUser/');
+
+export const listProducts = () => axios.get('/products/');

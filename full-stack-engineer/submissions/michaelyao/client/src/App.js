@@ -1,5 +1,15 @@
+import { CssBaseline } from '@mui/material';
+import Header from './components/header/Header';
+import AppRoutes from './AppRoutes';
+
 function App() {
-  return <div className="App"></div>;
+  return (
+    <>
+      <CssBaseline />
+      <Header />
+      <AppRoutes />
+    </>
+  );
 }
 
 export default App;

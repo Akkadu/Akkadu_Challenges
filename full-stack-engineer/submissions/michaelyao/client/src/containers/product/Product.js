@@ -78,7 +78,7 @@ const Product = () => {
             justifyContent="space-between"
           >
             <Typography variant="subtitle1" component="span">
-              Reviews:
+              {`Reviews(${reviews && reviews.length}):`}
             </Typography>
             <Button
               variant="contained"

@@ -13,7 +13,11 @@ import {
 import { AuthContext } from '../../contexts/authContext';
 import { DateTime } from 'luxon';
 
-const ReviewItem = ({ review }) => {
+const ReviewItem = ({
+  review,
+  handleClickEditButton,
+  handleClickDeleteButton,
+}) => {
   const { user } = useContext(AuthContext);
 
   return (
@@ -30,20 +34,23 @@ const ReviewItem = ({ review }) => {
                 justifyContent="space-between"
               >
                 <Grid item>
-                  <Rating
-                    value={review.rating / 2}
-                    readOnly
-                    precision={0.5}
-                    size="small"
-                  />
+                  <Rating value={review.rating} readOnly size="small" />
                 </Grid>
                 <Grid item>
                   {user && user.id === review.user.id && (
                     <Stack direction="row" spacing={0.5}>
-                      <Button variant="contained" size="small">
+                      <Button
+                        variant="contained"
+                        size="small"
+                        onClick={() => handleClickEditButton(review)}
+                      >
                         Edit
                       </Button>
-                      <Button variant="outlined" size="small">
+                      <Button
+                        variant="outlined"
+                        size="small"
+                        onClick={() => handleClickDeleteButton(review)}
+                      >
                         Delete
                       </Button>
                     </Stack>

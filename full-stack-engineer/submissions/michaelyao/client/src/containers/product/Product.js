@@ -11,10 +11,13 @@ import { listReviews, deleteReview } from '../../Api';
 import { useParams, useLocation } from 'react-router-dom';
 import ReviewItem from '../../components/reviewItem/ReviewItem';
 import AddReview from '../../components/addReview/AddReview';
+import EditReview from '../../components/editReview/EditReview';
 
 const Product = () => {
   const [reviews, setReviews] = useState(null);
   const [displayAddReview, setDisplayAddReview] = useState(false);
+  const [displayEditReview, setDisplayEditReview] = useState(false);
+  const [reviewBeingEdited, setReviewBeingEdited] = useState(null);
 
   let params = useParams();
   const { state } = useLocation();
@@ -29,23 +32,35 @@ const Product = () => {
     fetchReviews();
   }, [fetchReviews]);
 
+  // Add review
   const handleClickWriteAReviewButton = () => {
     setDisplayAddReview(true);
   };
 
-  const handleClickEditButton = (review) => {
-    // TODO:
-    console.log(review);
+  const handleHideAddReview = (reviewCreated) => {
+    setDisplayAddReview(false);
+    if (reviewCreated) {
+      fetchReviews();
+    }
   };
 
+  // Update review
+  const handleClickEditButton = (review) => {
+    setDisplayEditReview(true);
+    setReviewBeingEdited(review);
+  };
+
+  const handleHideEditReview = (reviewUpdated) => {
+    setDisplayEditReview(false);
+    if (reviewUpdated) {
+      fetchReviews();
+    }
+  };
+
+  // Delete review
   const handleClickDeleteButton = async (review) => {
     await deleteReview(params.productId, review.id);
     await fetchReviews();
-  };
-
-  const handleHideAddReview = () => {
-    setDisplayAddReview(false);
-    fetchReviews();
   };
 
   return (
@@ -95,6 +110,13 @@ const Product = () => {
         <AddReview
           productId={params.productId}
           onHideAddReview={handleHideAddReview}
+        />
+      )}
+      {displayEditReview && (
+        <EditReview
+          productId={params.productId}
+          review={reviewBeingEdited}
+          onHideEditReview={handleHideEditReview}
         />
       )}
     </Container>

@@ -30,5 +30,5 @@ export const createReview = (productId, rating, text) =>
 export const deleteReview = (productId, reviewId) =>
   axios.delete(`/products/${productId}/reviews/${reviewId}`);
 
-export const updateReview = (productId, reviewId) =>
-  axios.patch(`/products/${productId}/reviews/${reviewId}`);
+export const updateReview = (productId, reviewId, rating, text) =>
+  axios.patch(`/products/${productId}/reviews/${reviewId}`, { rating, text });

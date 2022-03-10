@@ -40,9 +40,16 @@ export default function Header() {
       <AppBar position="static">
         <Toolbar>
           <Grid alignItems="center" container>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Product review
-            </Typography>
+            <Link
+              component={RouterLink}
+              to={APPLICATION_ROUTES.ROOT}
+              color="inherit"
+              style={{ textDecoration: 'none' }}
+            >
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                Product review
+              </Typography>
+            </Link>
           </Grid>
           {!user ? (
             <Link

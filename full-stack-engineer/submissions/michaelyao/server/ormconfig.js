@@ -10,7 +10,7 @@ switch (process.env.NODE_ENV) {
   case 'development':
     Object.assign(dbConfig, {
       type: 'postgres',
-      url: 'postgresql://xiaoxiayao:1234@localhost/product_review_qa',
+      url: 'postgresql://xiaoxiayao:1234@localhost/product_review_staging',
       entities: ['**/*.entity.js'],
     });
     break;

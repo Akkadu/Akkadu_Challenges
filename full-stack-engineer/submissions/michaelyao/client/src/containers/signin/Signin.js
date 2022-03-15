@@ -23,8 +23,9 @@ const Signin = () => {
 
   let navigate = useNavigate();
 
-  const handleClickSigninButton = async () => {
+  const handleClickSigninButton = async (event) => {
     // TODO: Do client form validation
+    event.preventDefault();
     setErrorMessage('');
     try {
       const { data } = await signin({ username, password });
@@ -39,7 +40,7 @@ const Signin = () => {
     <Container maxWidth="xs">
       <Box mt={2}>
         <Paper>
-          <Box p={2}>
+          <Box p={2} component="form" onSubmit={handleClickSigninButton}>
             <Typography variant="h6">Sign In</Typography>
             <TextField
               variant="outlined"
@@ -66,10 +67,10 @@ const Signin = () => {
 
             <Box my={2}>
               <Button
+                type="submit"
                 fullWidth
                 variant="contained"
                 color="primary"
-                onClick={handleClickSigninButton}
               >
                 Sign In
               </Button>

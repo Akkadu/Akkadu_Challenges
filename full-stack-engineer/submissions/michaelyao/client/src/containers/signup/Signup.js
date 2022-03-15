@@ -24,7 +24,8 @@ const Signup = () => {
 
   let navigate = useNavigate();
 
-  const handleClickSignupButton = async () => {
+  const handleClickSignupButton = async (event) => {
+    event.preventDefault();
     // TODO: Do client form validation
     setErrorMessage('');
     try {
@@ -40,7 +41,7 @@ const Signup = () => {
     <Container maxWidth="xs">
       <Box mt={2}>
         <Paper>
-          <Box p={2}>
+          <Box p={2} component="form" onSubmit={handleClickSignupButton}>
             <Typography variant="h6">Sign Up</Typography>
             <TextField
               variant="outlined"
@@ -68,9 +69,9 @@ const Signup = () => {
             <Box my={2}>
               <Button
                 fullWidth
+                type="submit"
                 variant="contained"
                 color="primary"
-                onClick={handleClickSignupButton}
               >
                 Sign Up
               </Button>

@@ -26,7 +26,8 @@ const AddReview = ({ productId, onHideAddReview }) => {
     onHideAddReview(reviewCreated);
   };
 
-  const handleClickCreateReviewButton = async () => {
+  const handleClickCreateReviewButton = async (event) => {
+    event.preventDefault();
     try {
       await createReview(productId, ratingValue, content);
       setDisplaySuccessAlert(true);
@@ -38,7 +39,7 @@ const AddReview = ({ productId, onHideAddReview }) => {
 
   return (
     <Dialog open onClose={handleClose} fullWidth>
-      <Box p={2}>
+      <Box p={2} component="form" onSubmit={handleClickCreateReviewButton}>
         <Grid
           container
           direction="row"
@@ -76,10 +77,10 @@ const AddReview = ({ productId, onHideAddReview }) => {
         <DialogActions>
           <Box mt={2}>
             <Button
+              type="submit"
               color="primary"
               variant="contained"
               size="small"
-              onClick={handleClickCreateReviewButton}
             >
               Create Review
             </Button>

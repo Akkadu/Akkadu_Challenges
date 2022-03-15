@@ -26,7 +26,8 @@ const UpdateReview = ({ productId, review, onHideEditReview }) => {
     onHideEditReview(reviewUpdated);
   };
 
-  const handleClickUpdateReviewButton = async () => {
+  const handleClickUpdateReviewButton = async (event) => {
+    event.preventDefault();
     try {
       await updateReview(productId, review.id, ratingValue, content);
       setDisplaySuccessAlert(true);
@@ -38,7 +39,7 @@ const UpdateReview = ({ productId, review, onHideEditReview }) => {
 
   return (
     <Dialog open onClose={handleClose} fullWidth>
-      <Box p={2}>
+      <Box p={2} component="form" onSubmit={handleClickUpdateReviewButton}>
         <Grid
           container
           direction="row"
@@ -76,10 +77,10 @@ const UpdateReview = ({ productId, review, onHideEditReview }) => {
         <DialogActions>
           <Box mt={2}>
             <Button
+              type="submit"
               color="primary"
               variant="contained"
               size="small"
-              onClick={handleClickUpdateReviewButton}
             >
               Update Review
             </Button>

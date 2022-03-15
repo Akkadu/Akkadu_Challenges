@@ -24,11 +24,11 @@ export const listProducts = () => axios.get('/products/');
 export const listReviews = (productId) =>
   axios.get(`/products/${productId}/reviews`);
 
-export const createReview = (productId, rating, text) =>
+export const createReview = (productId, { rating, text }) =>
   axios.post(`/products/${productId}/reviews`, { rating, text });
 
 export const deleteReview = (productId, reviewId) =>
   axios.delete(`/products/${productId}/reviews/${reviewId}`);
 
-export const updateReview = (productId, reviewId, rating, text) =>
+export const updateReview = (productId, reviewId, { rating, text }) =>
   axios.patch(`/products/${productId}/reviews/${reviewId}`, { rating, text });

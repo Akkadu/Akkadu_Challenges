@@ -29,7 +29,10 @@ const UpdateReview = ({ productId, review, onHideEditReview }) => {
   const handleClickUpdateReviewButton = async (event) => {
     event.preventDefault();
     try {
-      await updateReview(productId, review.id, ratingValue, content);
+      await updateReview(productId, review.id, {
+        rating: ratingValue,
+        text: content,
+      });
       setDisplaySuccessAlert(true);
       setReviewUpdated(true);
     } catch (error) {

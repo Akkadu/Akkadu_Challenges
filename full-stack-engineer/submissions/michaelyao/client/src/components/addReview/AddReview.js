@@ -29,7 +29,7 @@ const AddReview = ({ productId, onHideAddReview }) => {
   const handleClickCreateReviewButton = async (event) => {
     event.preventDefault();
     try {
-      await createReview(productId, ratingValue, content);
+      await createReview(productId, { rating: ratingValue, text: content });
       setDisplaySuccessAlert(true);
       setReviewCreated(true);
     } catch (error) {

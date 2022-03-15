@@ -1,6 +1,7 @@
 import {
   BadRequestException,
   ConflictException,
+  ForbiddenException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -73,7 +74,7 @@ export class ReviewsService {
       throw new NotFoundException('review not found');
     }
     if (user.id != review.user.id) {
-      throw new BadRequestException('you can only edit your reviews');
+      throw new ForbiddenException('you can only edit your reviews');
     }
     Object.assign(review, updateReviewDto);
     return this.reviewRepo.save(review);

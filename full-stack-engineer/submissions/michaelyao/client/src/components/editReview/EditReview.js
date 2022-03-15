@@ -15,15 +15,19 @@ import {
 import CancelIcon from '@mui/icons-material/Cancel';
 import { updateReview } from '../../Api';
 
-const UpdateReview = ({ productId, review, onHideEditReview }) => {
+const UpdateReview = ({ productId, review, onReviewUpdated, onClose }) => {
   const [ratingValue, setRatingValue] = useState(review.rating);
   const [content, setContent] = useState(review.text);
   const [errorMessage, setErrorMessage] = useState(null);
   const [displaySuccessAlert, setDisplaySuccessAlert] = useState(false);
   const [reviewUpdated, setReviewUpdated] = useState(false);
 
-  const handleClose = () => {
-    onHideEditReview(reviewUpdated);
+  const handleOnClose = () => {
+    if (reviewUpdated) {
+      onReviewUpdated();
+    } else {
+      onClose();
+    }
   };
 
   const handleClickUpdateReviewButton = async (event) => {
@@ -41,7 +45,7 @@ const UpdateReview = ({ productId, review, onHideEditReview }) => {
   };
 
   return (
-    <Dialog open onClose={handleClose} fullWidth>
+    <Dialog open onClose={handleOnClose} fullWidth>
       <Box p={2} component="form" onSubmit={handleClickUpdateReviewButton}>
         <Grid
           container
@@ -55,7 +59,7 @@ const UpdateReview = ({ productId, review, onHideEditReview }) => {
             Edit Review
           </Typography>
 
-          <IconButton onClick={handleClose} color="error">
+          <IconButton onClick={onClose} color="error">
             <CancelIcon />
           </IconButton>
         </Grid>
@@ -95,7 +99,7 @@ const UpdateReview = ({ productId, review, onHideEditReview }) => {
           autoHideDuration={6000}
           onClose={() => {
             setDisplaySuccessAlert(false);
-            handleClose();
+            onReviewUpdated();
           }}
         >
           <Alert severity="success">Review updated successfully!</Alert>

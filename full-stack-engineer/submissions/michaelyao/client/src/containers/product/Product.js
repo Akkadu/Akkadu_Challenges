@@ -37,24 +37,28 @@ const Product = () => {
     setDisplayAddReview(true);
   };
 
-  const handleHideAddReview = (reviewCreated) => {
+  const handleReviewCreated = () => {
     setDisplayAddReview(false);
-    if (reviewCreated) {
-      fetchReviews();
-    }
+    fetchReviews();
+  };
+
+  const handleCloseAddReview = () => {
+    setDisplayAddReview(false);
   };
 
   // Update review
+  const handleReviewUpdated = () => {
+    setDisplayEditReview(false);
+    fetchReviews();
+  };
+
+  const handleCloseUpdateReview = () => {
+    setDisplayEditReview(false);
+  };
+
   const handleClickEditButton = (review) => {
     setDisplayEditReview(true);
     setReviewBeingEdited(review);
-  };
-
-  const handleHideEditReview = (reviewUpdated) => {
-    setDisplayEditReview(false);
-    if (reviewUpdated) {
-      fetchReviews();
-    }
   };
 
   // Delete review
@@ -109,14 +113,16 @@ const Product = () => {
       {displayAddReview && (
         <AddReview
           productId={params.productId}
-          onHideAddReview={handleHideAddReview}
+          onReviewCreated={handleReviewCreated}
+          onClose={handleCloseAddReview}
         />
       )}
       {displayEditReview && (
         <EditReview
           productId={params.productId}
           review={reviewBeingEdited}
-          onHideEditReview={handleHideEditReview}
+          onReviewUpdated={handleReviewUpdated}
+          onClose={handleCloseUpdateReview}
         />
       )}
     </Container>

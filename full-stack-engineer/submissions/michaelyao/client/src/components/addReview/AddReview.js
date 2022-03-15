@@ -15,15 +15,19 @@ import {
 import CancelIcon from '@mui/icons-material/Cancel';
 import { createReview } from '../../Api';
 
-const AddReview = ({ productId, onHideAddReview }) => {
+const AddReview = ({ productId, onReviewCreated, onClose }) => {
   const [ratingValue, setRatingValue] = useState(0);
   const [content, setContent] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
   const [displaySuccessAlert, setDisplaySuccessAlert] = useState(false);
   const [reviewCreated, setReviewCreated] = useState(false);
 
-  const handleClose = () => {
-    onHideAddReview(reviewCreated);
+  const handleOnClose = () => {
+    if (reviewCreated) {
+      onReviewCreated();
+    } else {
+      onClose();
+    }
   };
 
   const handleClickCreateReviewButton = async (event) => {
@@ -38,7 +42,7 @@ const AddReview = ({ productId, onHideAddReview }) => {
   };
 
   return (
-    <Dialog open onClose={handleClose} fullWidth>
+    <Dialog open onClose={handleOnClose} fullWidth>
       <Box p={2} component="form" onSubmit={handleClickCreateReviewButton}>
         <Grid
           container
@@ -52,7 +56,7 @@ const AddReview = ({ productId, onHideAddReview }) => {
             New Review
           </Typography>
 
-          <IconButton onClick={handleClose} color="error">
+          <IconButton onClick={onClose} color="error">
             <CancelIcon />
           </IconButton>
         </Grid>
@@ -92,7 +96,7 @@ const AddReview = ({ productId, onHideAddReview }) => {
           autoHideDuration={6000}
           onClose={() => {
             setDisplaySuccessAlert(false);
-            handleClose();
+            onReviewCreated();
           }}
         >
           <Alert severity="success">Review created successfully!</Alert>

@@ -1,6 +1,6 @@
 import {
   BadRequestException,
-  ForbiddenException,
+  ConflictException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -35,7 +35,7 @@ export class ReviewsService {
     }
     const reviewUserIds = product.reviews.map((review) => review.user.id);
     if (reviewUserIds.includes(user.id)) {
-      throw new BadRequestException(
+      throw new ConflictException(
         'you have already created an review for the product',
       );
     }

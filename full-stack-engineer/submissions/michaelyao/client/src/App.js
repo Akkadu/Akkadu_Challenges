@@ -17,7 +17,9 @@ function App() {
       try {
         const { data } = await currentUser();
         setUser(data);
-      } catch (error) {}
+      } catch (error) {
+        setUser(null);
+      }
     };
     fetchData();
   }, []);

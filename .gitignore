@@ -1,4 +1,5 @@
 .DS_Store
 node_modules/
 **/realtime-chat/nuxt-chat/node_modules/
+**/realtime-chat/nuxt-chat/.nuxt/
 **/realtime-chat/chat-api/node_modules/

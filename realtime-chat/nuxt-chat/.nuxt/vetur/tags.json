@@ -1,8 +1,0 @@
-{
-  "IoSocketStatus": {
-    "description": "Auto imported from node_modules/nuxt-socket-io/lib/components/SocketStatus.js"
-  },
-  "MessageBox": {
-    "description": "Auto imported from components/MessageBox.vue"
-  }
-}

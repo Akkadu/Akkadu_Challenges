@@ -1,0 +1,15 @@
+{
+  "name": "chat-api",
+  "version": "1.0.0",
+  "description": "real time chat api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mesfin Tsegaye",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "socket.io": "^4.4.1"
+  }
+}

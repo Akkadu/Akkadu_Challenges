@@ -1,0 +1,23 @@
+[
+  {
+    "name": "chat",
+    "path": "/chat",
+    "component": "/Users/mesfintsegaye/Documents/project/akkadu/final/Akkadu_Challenges/realtime-chat/nuxt-chat/pages/chat.vue",
+    "chunkName": "pages/chat",
+    "_name": "_453f5945"
+  },
+  {
+    "name": "inspire",
+    "path": "/inspire",
+    "component": "/Users/mesfintsegaye/Documents/project/akkadu/final/Akkadu_Challenges/realtime-chat/nuxt-chat/pages/inspire.vue",
+    "chunkName": "pages/inspire",
+    "_name": "_d6ce2606"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/mesfintsegaye/Documents/project/akkadu/final/Akkadu_Challenges/realtime-chat/nuxt-chat/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_56cce496"
+  }
+]

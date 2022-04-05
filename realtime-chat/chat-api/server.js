@@ -21,7 +21,6 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
     //Listen for Chat messages
     socket.on("createMessage", async function (msg) {
-        console.log(msg)
         socket.broadcast.emit("message", msg)
     })
 

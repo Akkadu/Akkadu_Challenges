@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* -------------- room.ejs -------------- */
+
+h1 {
+    text-align: center;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 100%;
+    height: 40px;
+    text-indent: 10px;
+}
+
+button {
+    width: 100%;
+    height: 50px;
+    background-color: #1a2eda;
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    border: none;
+}
+
+.fields {
+    width: 100%;
+}
+
+.window {
+    margin: auto;
+    margin-top: 20px;
+    width: 50%;
+    height: 50vh;
+    border: 2px solid #c2c6b6;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+.chat-message {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+#output, #feedback {
+    margin-left: 10px;
+}
+
+
+.users {
+    margin-left: 40px;
+    margin-top: 50px;
+}
+
+.users p {
+    background-color: rgb(110, 103, 103);
+    color: white;
+}
+
+/* -------------- index.ejs -------------- */
+
+.content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content p {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.content input {
+    margin-bottom: 20px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+
+.content input[type="submit"] {
+    cursor: pointer;
+}
+
+::placeholder {
+    font-weight: 700;
+}
+
+.content div {
+    border: 2px solid black;
+    padding: 70px;
+    border-radius: 25px;
+}

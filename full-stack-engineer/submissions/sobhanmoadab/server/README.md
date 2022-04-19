@@ -4,8 +4,8 @@ Server(NodeJs)
 -cd to /server & set DOCKER_MONGO_URI in .env file (already created in example.env)
 
 pull these images to run them on your local machine
-server_image: https://hub.docker.com/r/illomens/akkadu-fullstack-client
-client_image: https://hub.docker.com/r/illomens/akkadu-fullstack-server
+    server_image: https://hub.docker.com/r/illomens/akkadu-fullstack-client
+    client_image: https://hub.docker.com/r/illomens/akkadu-fullstack-server
 -in /server directory, docker-compose up
 2-Localhost:
 

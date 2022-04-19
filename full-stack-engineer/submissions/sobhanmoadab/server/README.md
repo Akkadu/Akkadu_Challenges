@@ -16,4 +16,4 @@ Client(ReactJs):
 
 cd to /public & npm i
 npm start
-After running both projects, make sure to hit this endpoint to insert some products into the database then open port 3000 on localhost
+After running both projects, make sure to hit this endpoint: https://localhost:8300/api/v1/product/seed to insert some products into the database then open port 3000 on localhost

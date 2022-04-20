@@ -1,0 +1,16 @@
+.black-and-white-image {
+  filter: grayscale(1) contrast(20);
+}
+
+.blur-image {
+  filter: blur(1px);
+}
+
+.radiant-effect {
+  filter: grayscale(42%) sepia(6%) brightness(90%) hue-rotate(102deg)
+    saturate(176%) contrast(211%);
+  -webkit-filter: grayscale(42%) sepia(6%) brightness(90%) hue-rotate(102deg)
+    saturate(176%) contrast(211%);
+  -moz-filter: grayscale(42%) sepia(6%) brightness(90%) hue-rotate(102deg)
+    saturate(176%) contrast(211%);
+}

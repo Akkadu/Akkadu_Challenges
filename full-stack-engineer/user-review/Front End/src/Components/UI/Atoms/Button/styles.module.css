@@ -1,0 +1,15 @@
+.primrayButton{
+    border: 1px solid #00bfa5;
+    background-color: transparent;
+    outline: none;
+    color: #00bfa5;
+    transition: .3s ease-in-out;
+}
+.primrayButton:hover{
+    background-color: #00bfa5;
+    border: 1px solid transparent;
+    color: white;
+}
+.primrayButton:active{
+    background-color: #26a69a;
+}

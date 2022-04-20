@@ -1,0 +1,39 @@
+.card {
+  display: flex;
+  border: 1px solid grey;
+  flex-direction: column;
+  width: 250px;
+  padding: 10px;
+}
+.productImage {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+}
+.inputFeild {
+  margin-top: 10px;
+}
+.button {
+  margin-top: 10px;
+}
+.updateReview {
+  display: flex;
+  flex-direction: column;
+}
+.updateReview p {
+  padding: 10px;
+}
+h4 {
+  margin: 0px;
+  margin-top: 8px;
+}
+p{
+  margin: 0px;
+
+}
+.reviewList{
+  margin-top: 8px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}

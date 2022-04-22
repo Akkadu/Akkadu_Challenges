@@ -6,6 +6,7 @@ function UpdateComment({
   oldvalue,
   commentId,
 }) {
+
   return (
     <form className="add-comment">
       <div>
@@ -15,7 +16,7 @@ function UpdateComment({
               type="radio"
               name={commentId}
               id={`5-${commentId}`}
-              //   checked={oldvalue.rating === 5 ? true : false}
+                checked={updatedValue.rating === 5 ? true : false}
               onChange={(e) =>
                 updateValueChange({
                   ...updatedValue,
@@ -28,7 +29,7 @@ function UpdateComment({
               type="radio"
               name={commentId}
               id={`4-${commentId}`}
-              //   checked={oldvalue.rating === 4 ? true : false}
+                checked={updatedValue.rating === 4 ? true : false}
               onChange={(e) =>
                 updateValueChange({
                   ...updatedValue,
@@ -41,7 +42,7 @@ function UpdateComment({
               type="radio"
               name={commentId}
               id={`3-${commentId}`}
-              //   checked={oldvalue.rating === 3 ? true : false}
+                checked={updatedValue.rating === 3 ? true : false}
               onChange={(e) =>
                 updateValueChange({
                   ...updatedValue,
@@ -54,7 +55,7 @@ function UpdateComment({
               type="radio"
               name={commentId}
               id={`2-${commentId}`}
-              //   checked={oldvalue.rating === 2 ? true : false}
+                checked={updatedValue.rating === 2 ? true : false}
               onChange={(e) =>
                 updateValueChange({
                   ...updatedValue,
@@ -67,7 +68,7 @@ function UpdateComment({
               type="radio"
               name={commentId}
               id={`1-${commentId}`}
-              //   checked={oldvalue.rating === 1 ? true : false}
+                checked={updatedValue.rating === 1 ? true : false}
               onChange={(e) =>
                 updateValueChange({
                   ...updatedValue,
@@ -83,6 +84,7 @@ function UpdateComment({
       <input
         type="text"
         placeholder="Name"
+        value={updatedValue.name}
         // value={oldvalue.name }
         onChange={(e) =>
           updateValueChange({ ...updatedValue, name: e.target.value })
@@ -90,7 +92,7 @@ function UpdateComment({
       />
       <textarea
         placeholder="Comment"
-        // value={updatedValue.content}
+        value={updatedValue.content}
         onChange={(e) =>
           updateValueChange({ ...updatedValue, content: e.target.value })
         }

@@ -33,9 +33,9 @@ export default function Login() {
                     <input type="text" placeholder="email address" />
                 </form>
                 <form onSubmit={e => LoginHandler(e)} className="login-form">
-                    <input onChange={e => setName(e.target.value)} value={name} type="text" placeholder="username" />
+                    <input onChange={e => setName(e.target.value)}   value={name} type="text" placeholder="username" />
                     <input onChange={e => setPassword(e.target.value)} value={password} type="password" placeholder="password" />
-                    <button >login</button>
+                    <button className='btn btn-primary ' >login</button>
                     <Link className="message" to='/register'>Not registered?</Link>
                 </form>
             </div>

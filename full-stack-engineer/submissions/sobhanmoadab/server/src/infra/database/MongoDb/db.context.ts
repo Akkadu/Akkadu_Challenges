@@ -3,8 +3,7 @@ import mongoose from "mongoose";
 import { commentSchema } from "./models/Comment";
 import { productSchema } from "./models/Product";
 
-const defaultMongoUri = process.env.DEFAULT_MONGO_URI ? process.env.DEFAULT_MONGO_URI : "mongodb://localhost/product_review_challenge"
-const dockerMongoUri = process.env.DOCKER_MONGO_URI ? process.env.DOCKER_MONGO_URI : "mongodb://mongo/product_review_challenge"
+const mongoUri = process.env.DOCKER_MONGO_URI ? process.env.DOCKER_MONGO_URI : "mongodb://localhost/product_review_challenge"
 
 @injectable()
 export class DbContext {
@@ -12,7 +11,7 @@ export class DbContext {
     private _db: typeof mongoose
 
     async connect() {
-        this._db = await mongoose.connect(defaultMongoUri)
+        this._db = await mongoose.connect(mongoUri)
         console.log('connected to DB')
     }
 

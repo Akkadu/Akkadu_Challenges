@@ -11,6 +11,7 @@ import CommentModel from "./database/MongoDb/models/Comment";
 export default class CommentRepository implements ICommentRepository {
 
     public async create(comment: Comment): Promise<Comment> {
+        console.log({comment})
         const createdComment = await CommentModel.create(comment)
         return createdComment
     }

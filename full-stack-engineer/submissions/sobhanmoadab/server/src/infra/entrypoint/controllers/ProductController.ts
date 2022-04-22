@@ -43,4 +43,18 @@ export default class ProductController implements interfaces.Controller {
         }
     }
 
+    @httpGet('/by-id')
+    public async getProductById(@request() req: Request, @response() res: Response) {
+        try {
+            const productId: any = req.query.productId
+            const product = await this.getProductUseCase.getProductById(productId)
+            return res.status(200).json({ status: 200, result: product })
+
+        } catch (e: any) {
+            return res.status(500).json({ status: 500, result: 'Something went wrong' })
+        }
+
+
+    }
+
 }

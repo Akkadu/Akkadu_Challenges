@@ -7,6 +7,7 @@ export default class Comment {
         public rating: number = 0,
         public content: string,
         public productId: ID,
+        public userId: ID,
         public _id = new mongoose.Types.ObjectId(),
     ) {
     }

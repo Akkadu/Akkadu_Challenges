@@ -39,9 +39,6 @@ export default class ProductRepository implements IProductRepository {
 
     public async pullComment(productId: ID, commentId: ID): Promise<void> {
 
-        console.log({ commentId })
-        console.log({ productId })
-
         await ProductModel.findByIdAndUpdate(productId, { $pull: { comments: commentId } })
 
     }
@@ -53,6 +50,10 @@ export default class ProductRepository implements IProductRepository {
             }
 
         })
+    }
 
+    public async getProductById(productId: ID): Promise<Product | null> {
+        const foundedProduct = await ProductModel.findById(productId).populate('comments')
+        return foundedProduct
     }
 }

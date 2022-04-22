@@ -10,4 +10,5 @@ export interface IProductRepository {
     updateProduct(id: ID, update: Partial<UpdateProductDto>): Promise<Product | null>
     pullComment(productId: ID, commentId: ID): Promise<void>
     pushComment(productId: ID, commentId: ID): Promise<void>
+    getProductById(productId: ID): Promise<Product | null>
 }

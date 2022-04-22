@@ -13,10 +13,13 @@ export default class DeleteCommentUseCase implements IDeleteCommentUseCase {
         this.productRepository = productRepository
     }
 
-    public async deleteComment(productId: ID, commentId: ID): Promise<void> {
-
+    public async deleteComment(commentId: ID, userId: ID): Promise<void> {
+        console.log({commentId, userId})
+        const foundedComment = await this.commentRepository.getCommentById(commentId)
+        if (!foundedComment) throw new Error('Could not find comment')
+        if (foundedComment.userId != userId) throw new Error('You can only modify your comments')
         await this.commentRepository.deleteComment(commentId)
-        await this.productRepository.pullComment(productId, commentId)
+        await this.productRepository.pullComment(foundedComment.productId, commentId)
     }
 
 

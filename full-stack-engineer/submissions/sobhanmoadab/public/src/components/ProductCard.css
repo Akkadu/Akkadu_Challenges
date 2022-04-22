@@ -1,0 +1,10 @@
+.card .btn-primary:hover {
+  background-color: #0af;
+  transform: scale(1.02);
+}
+.card .btn-primary {
+    transition: 0.5s;
+}
+.card {
+    cursor: pointer;
+}

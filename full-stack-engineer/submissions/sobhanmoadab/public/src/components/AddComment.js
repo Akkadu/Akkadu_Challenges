@@ -1,6 +1,7 @@
 import React from "react";
 import "./AddComment.scss";
 function AddComment({ submitFunction, value, onValueChange }) {
+  
   return (
     <form className="add-comment" onSubmit={submitFunction}>
       <div>

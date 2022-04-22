@@ -48,7 +48,7 @@ function Product() {
                     temp.forEach(e => {
                         sum += e.rating;
                     });
-                    return parseInt(sum / temp.length);
+                    return parseInt(sum / temp.length) ? parseInt(sum / temp.length) : 0;
                 });
                 toast.success(myReview ? 'review updated successfully' : 'review added successfully');
                 setMyReview(data);
@@ -79,7 +79,7 @@ function Product() {
                     temp.forEach(e => {
                         sum += e.rating;
                     });
-                    return parseInt(sum / temp.length);
+                    return parseInt(sum / temp.length) ? parseInt(sum / temp.length) : 0;
                 });
                 setMyReview(null);
                 setStar(0);
@@ -105,7 +105,7 @@ function Product() {
                             data.forEach(e => {
                                 sum += e.rating;
                             });
-                            return parseInt(sum / data.length);
+                            return parseInt(sum / data.length) ? parseInt(sum / data.length) : 0;
                         });
 
                         user && data.forEach(e => {

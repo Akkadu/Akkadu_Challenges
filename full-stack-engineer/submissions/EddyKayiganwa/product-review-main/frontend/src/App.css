@@ -281,7 +281,7 @@ i.bi-star-fill {
 }
 
 .clsbtn button {
-  width: 50px;
+  width: 40px;
   background-color: #212529;
   color: #fff;
   border: none;
@@ -556,4 +556,56 @@ i.bi-star-fill {
 		opacity: 1;
 		z-index: 5;
 	}
+}
+
+@media screen and (max-width: 780px) {
+	.container--signin, .container--signup {
+		width: 100%;
+	}
+
+	.container.right-panel-active .container--signin {
+		transform: translateX(0%);
+	}
+
+	.container.right-panel-active .container--signup {
+		transform: translateX(0%);
+	}
+
+	.container__overlay {
+		display: none;
+	}
+
+	.form-container .info, .sideInfo {
+		display: block;
+	}
+}
+
+.rowrev {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.rowrev .likes {
+  width: 100%;
+  padding: 0px 10px;
+  max-width: 83px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.likes i {
+  cursor: pointer;
+  font-size: 22px;
+  color: #cacaca;
+  transition: 0.3s ease-in-out;
+}
+
+.likes i:hover {
+  color: white;
+}
+
+.likes p {
+  margin: 0px;
 }

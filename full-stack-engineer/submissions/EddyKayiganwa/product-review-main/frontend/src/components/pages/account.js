@@ -89,6 +89,8 @@ function Account() {
                     <input onChange={(event) => setEmail(event.target.value)} required type="email" placeholder="Email" className="input" />
                     <input onChange={(event) => setPassword(event.target.value)} required type="password" placeholder="Password" className="input" autoComplete='false' />
                     {!requesting ? <button type='submit' className="btn">Sign Up</button> : <button style={{cursor: 'wait'}} type="button" className='btn'>Loading</button>}
+
+                    <p>Already have account? <Link onClick={() => {setAct(false); clearForm()}} to='#' className="link" style={{margin: "20px 10px 0px"}}>Login</Link></p>
                 </form>
             </div>
 
@@ -97,8 +99,9 @@ function Account() {
                     <h2 className="form__title">Sign In</h2>
                     <input onChange={(event) => setEmail(event.target.value)} required type="email" placeholder="Email" className="input" />
                     <input onChange={(event) => setPassword(event.target.value)} required type="password" placeholder="Password" className="input" autoComplete='false'/>
-                    <Link to="#" className="link">Forgot your password?</Link>
                     {!requesting ? <button type='submit' className="btn">Sign In</button> : <button style={{cursor: 'wait'}} type="button" className='btn'>Loading</button>}
+
+                    <p>Do not have Account? <Link onClick={() => {setAct(true); clearForm()}} to='#' className="link" style={{margin: "20px 10px 0px"}}>Signup</Link></p>
                 </form>
             </div>
 

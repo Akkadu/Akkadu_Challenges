@@ -103,6 +103,64 @@ const ProductContextProvider = ({ children }) => {
         return null;
     };
 
+    const getLikes = async(review) => {
+        const res = await fetch(`/api/likes/revlikes/${review}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${authToken}`
+            }
+        });
+        if (res.status === 200) {
+            return res.json();
+        }
+        return null;
+    };
+
+    const likeReview = async(review, data) => {
+        const res = await fetch(`/api/likes/create/${review}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${authToken}`
+            },
+            body: JSON.stringify(data)
+        });
+        if (res.status === 200) {
+            return res.json();
+        }
+        return null;
+    };
+
+    const unlikeReview = async(like) => {
+        const res = await fetch(`/api/likes/delete/${like}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${authToken}`
+            },
+        });
+        if (res.status === 200) {
+            return res.json();
+        }
+        return null;
+    };
+
+    const updateLike = async(review, data) => {
+        const res = await fetch(`/api/likes/update/${review}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${authToken}`
+            },
+            body: JSON.stringify(data)
+        });
+        if (res.status === 200) {
+            return res.json();
+        }
+        return null;
+    };
+
     const contextData = {
         products,
         getProducts,
@@ -111,6 +169,10 @@ const ProductContextProvider = ({ children }) => {
         sendReview,
         updateReview,
         deleteReview,
+        getLikes,
+        likeReview,
+        unlikeReview,
+        updateLike
     };
 
     useEffect(() => {

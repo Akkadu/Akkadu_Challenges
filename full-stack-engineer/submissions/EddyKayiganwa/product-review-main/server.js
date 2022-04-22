@@ -1,13 +1,18 @@
 const express = require('express');
+const path = require('path');
 const colors = require('colors');
 const cors = require('cors');
 const dotenv = require('dotenv').config();
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db')
 const{errorHandler} = require('./middleware/errorMiddleware')
-const port = process.env.PORT || 5000
+const port = process.env.PORT
 const fileupload = require('express-fileupload')
 const index = require('./routes/index')
+
+const Like = require('./models/likeModel');
+const asyncHandler = require('express-async-handler');
+
 connectDB()
 const app = express();
 app.use(bodyParser.json());
@@ -20,8 +25,10 @@ app.use(express.urlencoded({
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api',index)
-app.post('/upload', (req, res) => {
-  console.log(req.files.foo);
+
+app.use('/', express.static(path.join(__dirname, 'frontend/build')));
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'))
 });
 
 app.use(errorHandler) 

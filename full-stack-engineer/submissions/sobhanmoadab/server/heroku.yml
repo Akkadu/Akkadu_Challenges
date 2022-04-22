@@ -5,5 +5,5 @@ build:
     PORT: 8300
     JWT_SECRET: supersecret
 run: 
-  web: npm run start
-   
+  web: npm i && npm run start
+

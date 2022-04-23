@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { BASE_URL } from '../utils/Constants'
+import { BASE_URL } from '../../utils/Constants'
 import './Login.css'
 export default function Login() {
     const [name, setName] = useState('')
@@ -18,11 +18,11 @@ export default function Login() {
             .then(res => {
                 localStorage.setItem('id', res.data.result._id)
                 localStorage.setItem('token', res.data.result.token[0])
+                setName('')
+                setPassword('')
+                navigate('/')
             })
             .catch(e => console.log(e))
-        setName('sobhan')
-        setPassword('sobhan')
-        navigate('/')
     }
     return (
         <div className="login-page">
@@ -35,7 +35,7 @@ export default function Login() {
                 <form onSubmit={e => LoginHandler(e)} className="login-form">
                     <input onChange={e => setName(e.target.value)} value={name} type="text" placeholder="username" />
                     <input onChange={e => setPassword(e.target.value)} value={password} type="password" placeholder="password" />
-                    <button >login</button>
+                    <button className='btn btn-primary ' >login</button>
                     <Link className="message" to='/register'>Not registered?</Link>
                 </form>
             </div>

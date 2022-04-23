@@ -1,11 +1,11 @@
 import { Navigate } from "react-router-dom";
 
-export const PrivateRoute = ({ children }) => {
+export const ProtectedRoute = ({ children }) => {
     const isAuthenticated = localStorage.getItem('token') === null ? false : true;
 
     if (isAuthenticated) {
-        return children
+        return <Navigate to="/" />
     }
+    return children
 
-    return <Navigate to="/login" />
 }

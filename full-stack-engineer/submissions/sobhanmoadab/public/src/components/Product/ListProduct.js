@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import BeatLoader from 'react-spinners/BeatLoader'
-import Api from '../utils/ApiConfig'
+import Api from '../../utils/ApiConfig'
 export default function ListProduct() {
   const [products, setProduct] = useState([]);
 

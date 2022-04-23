@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { BASE_URL } from "../utils/Constants";
 import "./comment.css";
 import moment from "moment";
 import AddComment from "./AddComment";
 import UpdateComment from "./UpdateComment";
 import { toast } from 'react-toastify'
-import Api from '../utils/ApiConfig'
+import Api from '../../utils/ApiConfig'
 function Comment({ value, onChange, productId, comments = [], userId }) {
 
   const onDeleteHandler = (e, cmId) => {
@@ -13,7 +12,7 @@ function Comment({ value, onChange, productId, comments = [], userId }) {
     Api
       .delete(`/api/v1/comments/?commentId=${cmId}`)
       .then((res) =>
-        toast.success("delete a your comments", {
+        toast.success("deleted your comment", {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
@@ -62,7 +61,7 @@ function Comment({ value, onChange, productId, comments = [], userId }) {
     };
     Api.put(`/api/v1/comments`, data)
       .then((result) => {
-        toast.success("update a your comments", {
+        toast.success("Updated your comment", {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
@@ -103,7 +102,7 @@ function Comment({ value, onChange, productId, comments = [], userId }) {
     Api
       .post(`/api/v1/comments`, data)
       .then((result) => {
-        toast.success("added a your comments", {
+        toast.success("Added your comment", {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,

@@ -1,13 +1,13 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { BASE_URL } from '../utils/Constants'
+import { Link, useNavigate } from 'react-router-dom'
+import { BASE_URL } from '../../utils/Constants'
 import './Login.css'
 
 export default function Register() {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
-
+    const navigate = useNavigate()
     function SignupHandler(e) {
         e.preventDefault()
         const data = {
@@ -18,10 +18,11 @@ export default function Register() {
             .then(res => {
                 localStorage.setItem('id', res.data.result._id)
                 localStorage.setItem('token', res.data.result.token[0])
+                setName('')
+                setPassword('')
+                navigate('/')
             })
             .catch(e => console.log(e))
-        setName('')
-        setPassword('')
     }
     return (
         <div className="form">

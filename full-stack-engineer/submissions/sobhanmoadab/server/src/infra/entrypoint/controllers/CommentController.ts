@@ -75,7 +75,7 @@ export default class CommentController implements interfaces.Controller {
             const commentDto: UpdateCommentDto = req.body
             const validated = await UpdateCommentDto.validate(commentDto)
             const createdComment = await this.updateCommentUseCase.updateComment(validated)
-            return res.status(200).json({ status: 200, result: createdComment })
+            return res.status(200).json({ status: 201, result: createdComment })
         } catch (err: any) {
             return res.status(400).json({ status: 500, err: err.message })
         }

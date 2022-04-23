@@ -1,4 +1,4 @@
-const BASE_URL = 'https://glacial-bastion-98904.herokuapp.com'
+const BASE_URL = 'http://localhost:8300'
 
 export {
     BASE_URL

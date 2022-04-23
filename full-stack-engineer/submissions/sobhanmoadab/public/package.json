@@ -1,6 +1,7 @@
 {
   "name": "app",
   "version": "0.1.0",
+  "proxy":"http://localhost:8300",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -21,7 +22,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "serve": "json-server --watch ./src/utility/db.json",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -7,7 +7,7 @@ const roomMessage = document.querySelector('.room-message');
 const users = document.querySelector('.users');
 
 //Socket server URL
-const socket = io.connect('http://192.168.43.68:3000');
+const socket = io.connect('http://localhost:3000');
 
 //Fetch URL Params from URL
 const queryString = window.location.search;

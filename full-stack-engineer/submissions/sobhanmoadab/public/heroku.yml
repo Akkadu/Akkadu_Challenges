@@ -1,0 +1,9 @@
+build:
+  docker:
+    web: Dockerfile
+  config: 
+    PORT: 8300
+    JWT_SECRET: supersecret
+run: 
+  web: npm i && npm start
+

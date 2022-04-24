@@ -11,7 +11,7 @@ export class DbContext {
     private _db: typeof mongoose
 
     async connect() {
-        this._db = await mongoose.connect("mongodb+srv://sobhan:Sobhan1810@cluster0.lbz4a.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        this._db = await mongoose.connect("mongodb://localhost/product_review_challenge")
         
         console.log('connected to DB')
     }

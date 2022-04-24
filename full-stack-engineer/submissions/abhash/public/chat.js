@@ -1,3 +1,4 @@
+const switchroom = document.getElementById("switchroom");
 const output = document.getElementById('output');
 const message = document.getElementById('message');
 const send = document.getElementById('send');
@@ -6,7 +7,7 @@ const roomMessage = document.querySelector('.room-message');
 const users = document.querySelector('.users');
 
 //Socket server URL
-const socket = io.connect('http://localhost:3000');
+const socket = io.connect('http://192.168.43.68:3000');
 
 //Fetch URL Params from URL
 const queryString = window.location.search;
@@ -24,6 +25,16 @@ socket.emit('joined-user', {
     roomname: roomname
 })
 
+//Switching rooms if the user wants to go to a new room
+switchroom.addEventListener("change", function() {
+	let path = window.location.href.split('?')[0]
+        window.open(
+           path+"?username="+username+"&roomname="+switchroom.value,
+           '_blank'
+        );
+});
+
+
 //Sending data when user clicks send
 send.addEventListener('click', () =>{
     socket.emit('chat', {
@@ -35,8 +46,17 @@ send.addEventListener('click', () =>{
 })
 
 //Sending username if the user is typing
-message.addEventListener('keypress', () => {
-    socket.emit('typing', {username: username, roomname: roomname})
+message.addEventListener('keypress', (event) => {
+    if(event.key === 'Enter'){
+	socket.emit('chat', {
+        	username: username,
+        	message: message.value,
+        	roomname: roomname
+    	})
+    	message.value = '';
+    }else{
+    	socket.emit('typing', {username: username, roomname: roomname})
+    }
 })
 
 //Displaying if new user has joined the room
@@ -50,11 +70,10 @@ socket.on('chat', (data) => {
     var current_time = d.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
 
     if(username == data.username){
-	output.innerHTML += '<p style="text-align:right"> ' + data.message + '</p>';
-        output.innerHTML += '<p style="text-align:right">'+ current_time +'</p>';
+	output.innerHTML +='<div class="container"><p style="text-align:right"> ' + data.message + '</p><span class="time-right">'+ current_time  + '</span></div>';
+
     }else{
-    	output.innerHTML += '<p><strong>' + data.username + '</strong>: ' + data.message + '</p>';
-	output.innerHTML += '<p>' + current_time + '</p>';
+	output.innerHTML +='<div class="container darker"><p><strong>' + data.username + '</strong>: ' + data.message + '</p><span class="time-left">'+ current_time  + '</span></div>';
     }    
     feedback.innerHTML = '';
     document.querySelector('.chat-message').scrollTop = document.querySelector('.chat-message').scrollHeight
@@ -65,5 +84,4 @@ socket.on('chat', (data) => {
 socket.on('typing', (user) => {
     feedback.innerHTML = '<p><em>' + user + ' is typing...</em></p>';
 })
-
 

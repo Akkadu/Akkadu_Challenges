@@ -7,12 +7,21 @@
     <title>Chat App</title>
 </head>
 <body>
+    <div class="roomlist">
+       <label for="rooms">Rooms</label><br>
+          <select name="roomname" id="roomname"  form="roomform">
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+             <option value="4">4</option>
+             <option value="5">5</option>
+          </select>
+    </div>
     <div class="content">
         <div>
-            <p>Welcome to Chat App</p>
-            <form action="/room" method="POST">
+            <p>Chat App</p>
+            <form id="roomform" action="/room" method="POST">
                 <input type="text" placeholder="Enter your Name" class="username" name="username" required>
-                <input type="text" placeholder="Enter Room Name" class="roomname" name="roomname" required>
                 <input type="submit" value="Enter">
             </form>
         </div>

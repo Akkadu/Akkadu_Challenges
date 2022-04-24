@@ -8,7 +8,8 @@
 
 h1 {
     text-align: center;
-    margin-top: 15px;
+    margin-top: 30px;
+    font-size: 30px;
     display: flex;
     flex-direction: column;
 }
@@ -38,8 +39,8 @@ button {
 .window {
     margin: auto;
     margin-top: 20px;
-    width: 50%;
-    height: 50vh;
+    width: 75%;
+    height: 75vh;
     border: 2px solid #c2c6b6;
     display: flex;
     flex-direction: column;
@@ -51,6 +52,7 @@ button {
     width: 100%;
     height: 100%;
     overflow: auto;
+    background-color: #33fff9;
 }
 
 #output, #feedback {
@@ -66,6 +68,63 @@ button {
 .users p {
     background-color: rgb(110, 103, 103);
     color: white;
+}
+
+ /* Chat containers */
+.container {
+  border: 1px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* Darker chat container */
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+/* Clear floats */
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Style images */
+.container img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+/* Style the right image */
+.container img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+/* Style time text */
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+  float: left;
+  color: #999;
+} 
+
+.roomlist {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
 }
 
 /* -------------- index.ejs -------------- */
@@ -101,6 +160,18 @@ button {
 
 .content div {
     border: 2px solid black;
-    padding: 70px;
-    border-radius: 25px;
+    padding: 40px;
+    border-radius:10px;
+    background-color: #33fff9;
+}
+
+.roomlist {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+
+body {
+  background-color: #33ffac;
 }

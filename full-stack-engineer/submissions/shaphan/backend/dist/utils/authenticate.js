@@ -16,17 +16,17 @@ exports.default = (req, res, next) => __awaiter(void 0, void 0, void 0, function
     if (!token) {
         return res.status(401).json({
             success: false,
-            message: "You are not authorized to access this page",
+            message: 'You are not authorized to access this page',
         });
     }
     const data = yield (0, jwtHelper_1.verifyToken)(token);
     if (data.error) {
         return res.status(401).json({
             success: false,
-            message: "You are not authorized to access this page",
+            message: 'You are not authorized to access this page',
         });
     }
     const user = yield (0, accounts_service_1.findUserById)(data.id || 0);
     res.locals.user = user;
-    next();
+    return next();
 });

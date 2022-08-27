@@ -16,6 +16,7 @@ exports.getUser = exports.login = exports.signUp = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const express_validator_1 = require("express-validator");
 const accounts_service_1 = require("../services/accounts.service");
+const jwtHelper_1 = require("../utils/jwtHelper");
 const signUp = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const errors = (0, express_validator_1.validationResult)(req);
     if (!errors.isEmpty()) {
@@ -24,8 +25,8 @@ const signUp = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield (0, accounts_service_1.createUser)(req.body);
     return res.status(201).json({
         success: true,
-        message: "Profile created successfully",
-        data: {
+        message: 'Profile created successfully',
+        user: {
             id: user.id,
         },
     });
@@ -33,27 +34,27 @@ const signUp = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.signUp = signUp;
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const input = req.body;
-    let user = yield (0, accounts_service_1.findUserByUsername)(input.username);
+    const user = yield (0, accounts_service_1.findUserByUsername)(input.username);
     if (!user) {
         return res.status(401).json({
             success: false,
-            message: "Incorrect credentials",
+            message: 'Incorrect credentials',
         });
     }
     if (!bcrypt_1.default.compareSync(input.password, user.password)) {
         return res.status(401).json({
             success: false,
-            message: "Incorrect credentials",
+            message: 'Incorrect credentials',
         });
     }
+    const token = (0, jwtHelper_1.signToken)(user, '24h');
     return res.status(200).json({
         success: true,
-        message: "Logged in successfully",
-        data: {
-            user: {
-                id: user.id,
-                firstName: user.fullName,
-            }
+        message: 'Logged in successfully',
+        token,
+        user: {
+            id: user.id,
+            firstName: user.fullName,
         },
     });
 });
@@ -62,13 +63,11 @@ const getUser = (req, res) => {
     const { user } = res.locals;
     return res.status(200).json({
         success: true,
-        message: "Profile retrieved successfully",
-        data: {
-            user: {
-                id: user.id,
-                fullName: user.fullName,
-                username: user.username,
-            },
+        message: 'Profile retrieved successfully',
+        user: {
+            id: user.id,
+            fullName: user.fullName,
+            username: user.username,
         },
     });
 };

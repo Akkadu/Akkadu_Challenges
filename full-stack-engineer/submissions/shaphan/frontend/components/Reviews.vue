@@ -143,6 +143,7 @@ interface ComponentData {
   } | null,
 
   currentReview: Review | null,
+  isLoggedIn: boolean,
 }
 
 export default Vue.extend({
@@ -164,12 +165,14 @@ export default Vue.extend({
             },
             user: null,
             currentReview: null,
+            isLoggedIn: false,
         };
     },
     mounted() {
       const productId = this.$route.params.id;
       this.$store.commit('user/logOnUser')
        const {user} = this.$store.state.user
+       this.isLoggedIn = this.$store.state.isLoggedIn
        this.user = user
       this.getProductReviews(Number(productId));
     },

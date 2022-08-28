@@ -68,7 +68,6 @@
                   asp-page-handler="Register"
                   type="submit"
                 >
-                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                   Sign up
                 </button>
               </div>
@@ -105,6 +104,7 @@ import { ValidationProvider, extend,  } from 'vee-validate';
       async submit() {
         await this.$axios.$post('/signup', this.form).then(({ success, data }) => {
           if (success) {
+            this.$toast.success('Signup successful')
             this.$router.push('/signin')
           }
         }).catch((e) => {

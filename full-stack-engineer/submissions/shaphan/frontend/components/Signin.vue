@@ -41,7 +41,6 @@
                   asp-page-handler="Register"
                   type="submit"
                 >
-                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                   Signin
                 </button>
               </div>

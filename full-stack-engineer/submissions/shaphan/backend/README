@@ -1,0 +1,31 @@
+# Product Review API
+
+This is a simple API that allows you to create, read, update, and delete reviews for projects. It is built using the [Express](https://expressjs.com/) framework, [PostgreSQL](https://www.postgresql.org/) database using [Prisma](https://www.prisma.io/) ORM and [TypeScript](https://www.typescriptlang.org/).
+
+### Clone repo
+
+### Apply migrations
+
+```sh
+prisma migrate deploy
+```
+
+### Configure environment variables
+
+- rename .env.example to .env
+- add database url
+- add secret key
+- add port
+
+### Run development server
+
+```sh
+yarn dev
+```
+
+### Run production server
+
+```sh
+yarn build
+yarn start
+```

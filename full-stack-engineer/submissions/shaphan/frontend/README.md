@@ -4,6 +4,11 @@ This is a simple front-end that allows you to create, read, update, and delete r
 
 ## Clone repo
 
+### Configure environment variables
+
+- Rename .env.example to .env
+- Add api url
+
 ## Build Setup
 
 ```bash

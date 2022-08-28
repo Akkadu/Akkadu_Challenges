@@ -6,6 +6,6 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-    name: "ReviewsPage",
+  name: 'ReviewsPage',
 })
 </script>

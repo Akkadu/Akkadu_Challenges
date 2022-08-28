@@ -32,7 +32,7 @@
                       ></fa-icon>
                       <fa-icon
                         v-for="i in 5 - (product?.averageStars || 0)"
-                        :key="'_'+i"
+                        :key="'_' + i"
                         :icon="['far', 'star']"
                         regular
                         class="text-primary"
@@ -240,7 +240,7 @@ interface ComponentData {
     stars: number
     comment: string
   }
-  newProduct: Product,
+  newProduct: Product
 }
 
 export default Vue.extend({
@@ -278,7 +278,6 @@ export default Vue.extend({
       })
     },
     setCurrentProduct(product: Product) {
-
       if (!this.$store.state.user.isLoggedIn) {
         this.$toast.error('You must be logged in to review products')
         this.$router.push('/signin')
@@ -288,8 +287,6 @@ export default Vue.extend({
     },
     publishReview() {
       const { user } = this.$store.state.user
-      console.log(user)
-
       if (!user) {
         return this.$router.push('/signin')
       }

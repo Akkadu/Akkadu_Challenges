@@ -10,6 +10,14 @@ This is a simple API that allows you to create, read, update, and delete reviews
 prisma migrate deploy
 ```
 
+### Seeding the database
+
+Populate your database with products
+
+```sh
+prisma db seed
+```
+
 ### Configure environment variables
 
 - rename .env.example to .env

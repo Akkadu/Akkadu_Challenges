@@ -1,25 +1,26 @@
 import { checkSchema } from 'express-validator';
 
 export default checkSchema({
-  name: {
+  comment: {
     isEmpty: {
-      errorMessage: 'Name is required',
+      errorMessage: 'Review is required',
       negated: true,
     },
     escape: true,
   },
-  price: {
+  productId: {
     isEmpty: {
       errorMessage: 'Price is required',
       negated: true,
     },
     escape: true,
   },
-  vendor: {
+  stars: {
     isEmpty: {
-      errorMessage: 'Vendor is required',
+      errorMessage: 'Choose your rating',
       negated: true,
     },
+    isInt: { options: { min: 1, max: 5 }, errorMessage: 'Rating must be between 1 and 5' },
     escape: true,
   },
 });

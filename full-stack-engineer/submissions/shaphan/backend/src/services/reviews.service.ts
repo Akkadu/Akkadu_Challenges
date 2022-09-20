@@ -12,37 +12,29 @@ const prisma = new PrismaClient();
 const createReview = async (input: ReviewInput, userId: number) => {
   const review = await prisma.review.create({
     data: {
-      productId: input.productId,
-      stars: input.stars,
+      productId: Number(input.productId),
+      stars: Number(input.stars),
       comment: input.comment,
-      userId,
+      userId: Number(userId),
     },
   });
 
-  updateProductAverageStars(input.productId);
-  updateProductReviewsCount(input.productId);
+  await updateProductAverageStars(Number(input.productId));
+  await updateProductReviewsCount(Number(input.productId));
   return review;
 };
 
-const findReviewById = async (id: number) => {
-  const review = await prisma.review.findFirst({
-    where: {
-      id: Number(id),
-    },
-  });
+const findReviewById = async (id: number) => prisma.review.findFirst({
+  where: {
+    id: Number(id),
+  },
+});
 
-  return review;
-};
-
-const findReviewsByProductId = async (productId: number) => {
-  const reviews = await prisma.review.findMany({
-    where: {
-      productId: Number(productId),
-    },
-  });
-
-  return reviews;
-};
+const findReviewsByProductId = async (productId: number) => prisma.review.findMany({
+  where: {
+    productId: Number(productId),
+  },
+});
 
 const updateReview = async (id: number, input: ReviewInput) => {
   const review = await prisma.review.update({
@@ -50,12 +42,12 @@ const updateReview = async (id: number, input: ReviewInput) => {
       id: Number(id),
     },
     data: {
-      stars: input.stars,
+      stars: Number(input.stars),
       comment: input.comment,
     },
   });
 
-  updateProductAverageStars(input.productId);
+  await updateProductAverageStars(Number(input.productId));
 
   return review;
 };
@@ -67,11 +59,17 @@ const deleteReview = async (id: number) => {
     },
   });
 
-  updateProductAverageStars(review.productId);
-  updateProductReviewsCount(review.productId);
+  await updateProductAverageStars(Number(review.productId));
+  await updateProductReviewsCount(Number(review.productId));
   return review;
 };
 
+const findUserReview = (userId: number, productId: number) => prisma.review.findFirst({
+  where: {
+    userId: Number(userId),
+    productId: Number(productId),
+  },
+});
 export {
   ReviewInput,
   createReview,
@@ -79,4 +77,5 @@ export {
   findReviewsByProductId,
   updateReview,
   deleteReview,
+  findUserReview,
 };

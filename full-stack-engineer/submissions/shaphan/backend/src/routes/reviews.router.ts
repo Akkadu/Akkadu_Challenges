@@ -1,12 +1,19 @@
 import express from 'express';
 import { addReview, editReview, removeReview } from '../controllers/reviews.controller';
 import authenticate from '../utils/authenticate';
+import reviewSchema from '../validations/review.schema';
 
 const reviewsRouter = express.Router();
 
 reviewsRouter
-  .post('/reviews', authenticate, addReview)
-  .put('/reviews/:id', editReview)
-  .delete('/reviews/:id', removeReview);
+  .route('/reviews')
+  .all(reviewSchema, authenticate)
+  .post(addReview);
+
+reviewsRouter
+  .route('/reviews/:id')
+  .all(authenticate)
+  .put(editReview)
+  .delete(removeReview);
 
 export default reviewsRouter;

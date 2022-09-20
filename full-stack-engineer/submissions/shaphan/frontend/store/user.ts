@@ -1,3 +1,5 @@
+import { ActionContext } from "vuex"
+
 interface User {
   id: number
   fullName: string
@@ -14,8 +16,11 @@ export const state = (): State => ({
   isLoggedIn: false,
 })
 
+type Context = ActionContext<State, State>
+
+
 export const mutations = {
-  setUser(state: State, user: User) {
+  SET_USER(state: State, user: User) {
     localStorage.setItem('app_user_id', user.id.toString())
     localStorage.setItem('app_user_token', user.token)
     localStorage.setItem('app_user_name', user.fullName)
@@ -24,10 +29,7 @@ export const mutations = {
     }
     state.user = user
   },
-  clearUser(state: State) {
-    state.user = null
-  },
-  logOnUser(state: State) {
+  LOG_ON_USER(state: State) {
     if (process.server) {
       return
     }
@@ -43,9 +45,10 @@ export const mutations = {
       state.isLoggedIn = false
       state.user = null
     }
+
   },
 
-  logOutUser(state: State) {
+  LOG_OUT_USER(state: State) {
     if (process.server) {
       return
     }
@@ -53,5 +56,31 @@ export const mutations = {
     localStorage.removeItem('app_user_token')
     localStorage.removeItem('app_user_name')
     state.user = null
+    state.isLoggedIn = false
   },
+}
+
+export const actions = {
+  setUser(context: Context, user: User) {
+    context.commit({
+      type: "SET_USER",
+      ...user,
+    })
+  },
+  logOn(context: Context) {
+    context.commit("LOG_ON_USER")
+  },
+  logOut(context: Context) {
+    context.commit("LOG_OUT_USER")
+  }
+}
+
+
+export const getters = {
+  isLoggedIn (state:State) {
+    return state.isLoggedIn
+  },
+  user(state: State) {
+    return state.user
+  }
 }

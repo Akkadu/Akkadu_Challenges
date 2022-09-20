@@ -1,16 +1,6 @@
 <template>
   <div>
-    <Navbar />
     <div class="container">
-      <div class="d-flex justify-content-end">
-        <button
-          class="btn btn-primary mt-4"
-          data-bs-toggle="modal"
-          data-bs-target="#addProductModal"
-        >
-          Create Product
-        </button>
-      </div>
       <div class="row align-items-center mt-4">
         <div v-for="product in products" :key="product.id" class="col-md-4">
           <div class="card p-3 m-2 w-100">
@@ -55,8 +45,6 @@
               </div>
               <button
                 class="btn btn-success mx-2"
-                data-bs-toggle="modal"
-                data-bs-target="#addReviewModal"
                 @click="setCurrentProduct(product)"
               >
                 Add Review
@@ -66,38 +54,27 @@
         </div>
       </div>
     </div>
-
-    <!-- Modal -->
-    <div
-      id="addReviewModal"
-      class="modal fade"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="Add review"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <div class="mt-2 mr-4">
-              <h1 class="main-heading mt-0">Review the product</h1>
-              <div class="row mt-4">
-                <div class="ratings">
-                  <fa-icon
-                    v-for="star in maxStars"
-                    :key="'_' + star"
-                    :class="{ active: star <= review.stars }"
-                    :icon="[star <= review.stars ? 'fas' : 'far', 'star']"
-                    class="star fa-2x"
-                    @click="review.stars = star"
-                  ></fa-icon>
-                </div>
-              </div>
-              <div>
-                <div class="form">
-                  <fieldset class="mt-4">
-                    <div class="form-floating mb-3">
+<!--     Modal -->
+    <Modal :show="showReviewModal" show-close @close="showReviewModal = false">
+      <div class="mt-2 mr-4">
+        <h1 class="main-heading mt-0">Review the product</h1>
+        <div class="row mt-4">
+          <div class="ratings">
+            <fa-icon
+              v-for="star in maxStars"
+              :key="'_' + star"
+              :class="{ active: star <= review.stars, 'text-danger': reviewErrors.stars && !review.stars }"
+              :icon="[star <= review.stars ? 'fas' : 'far', 'star']"
+              class="star fa-2x"
+              @click="review.stars = star"
+            ></fa-icon>
+            <div v-if="reviewErrors.stars && ! review.stars" class="mt-2 text-danger">{{ reviewErrors.stars }}</div>
+          </div>
+        </div>
+        <div>
+          <div class="form">
+            <fieldset class="mt-4">
+              <div class="form-floating mb-3 has-validation">
                       <textarea
                         id="comment"
                         v-model="review.comment"
@@ -105,147 +82,61 @@
                         name="comment"
                         placeholder="Add your review"
                         rows="3"
+                        :class="{'is-invalid': reviewErrors.comment && !review.comment}"
                       />
-                      <label for="comment">Write review</label>
-                    </div>
-                  </fieldset>
-                </div>
-                <div>
-                  <div class="modal-footer border-top-0">
-                    <button
-                      ref="CloseReview"
-                      type="button"
-                      class="btn btn-light"
-                      data-bs-dismiss="modal"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      @click="publishReview()"
-                    >
-                      Publish
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                <div class="invalid-feedback">{{ reviewErrors.comment }}</div>
+                <label for="comment">Write review</label>
 
-    <div
-      id="addProductModal"
-      class="modal fade"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="Add Product"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <div class="mt-2 mr-4">
-              <h1 class="main-heading mt-0">Create the product</h1>
-              <div>
-                <div class="form">
-                  <fieldset class="mt-4">
-                    <div class="form-floating mb-3">
-                      <input
-                        id="name"
-                        v-model="newProduct.name"
-                        class="form-control form-control-lg fw-bold text-dark border-1"
-                        name="name"
-                        placeholder="Name"
-                        rows="3"
-                      />
-                      <label for="name">Name</label>
-                    </div>
-                  </fieldset>
-                  <fieldset class="mt-4">
-                    <div class="form-floating mb-3">
-                      <input
-                        id="price"
-                        v-model="newProduct.price"
-                        class="form-control form-control-lg fw-bold text-dark border-1"
-                        name="price"
-                        placeholder="Price"
-                        rows="3"
-                      />
-                      <label for="price">Price</label>
-                    </div>
-                  </fieldset>
-                  <fieldset class="mt-4">
-                    <div class="form-floating mb-3">
-                      <input
-                        id="vendor"
-                        v-model="newProduct.vendor"
-                        class="form-control form-control-lg fw-bold text-dark border-1"
-                        name="vendor"
-                        placeholder="Vendor"
-                        rows="3"
-                      />
-                      <label for="vendor">Vendor</label>
-                    </div>
-                  </fieldset>
-                </div>
-                <div>
-                  <div class="modal-footer border-top-0">
-                    <button
-                      ref="CloseAddProduct"
-                      type="button"
-                      class="btn btn-light"
-                      data-bs-dismiss="modal"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      @click="createProduct()"
-                    >
-                      Create
-                    </button>
-                  </div>
-                </div>
               </div>
+
+            </fieldset>
+          </div>
+          <div>
+            <div class="modal-footer border-top-0">
+              <button
+                type="button"
+                class="btn btn-light"
+                @click="showReviewModal = false"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="publishReview()"
+              >
+                Publish
+              </button>
             </div>
           </div>
         </div>
       </div>
+    </Modal>
     </div>
-  </div>
 </template>
+
 
 <script lang="ts">
 import Vue from 'vue'
-import Navbar from './Navbar.vue'
-
-interface Product {
-  id?: number
-  name: string
-  price: number
-  vendor: string
-  averageStars?: number
-  reviewsCount?: number
-}
+import {IBackendError, IProduct} from "~/services/types";
 
 interface ComponentData {
-  products: Product[]
-  currentProduct: Product | null
+  products: IProduct[]
+  currentProduct: IProduct | null
   review: {
     stars: number
     comment: string
   }
-  newProduct: Product
+  newProduct: IProduct
+  showProductModal: boolean
+  showReviewModal: boolean,
+  reviewErrors: {
+    [x: string]: string
+  }
 }
 
 export default Vue.extend({
   name: 'ProductsPage',
-  components: { Navbar },
   props: {
     maxStars: {
       type: Number,
@@ -256,6 +147,10 @@ export default Vue.extend({
     return {
       products: [],
       currentProduct: null,
+      reviewErrors: {
+        comment: '',
+        stars: ''
+      },
       review: {
         stars: 0,
         comment: '',
@@ -265,84 +160,69 @@ export default Vue.extend({
         price: 0,
         vendor: '',
       },
+      showProductModal: false,
+      showReviewModal: false,
     }
   },
-  mounted() {
-    this.getProducts()
-    this.$store.commit('user/logOnUser')
+  async fetch() {
+    const res = await this.$productService.GetProducts()
+    this.products = res.products
   },
-  methods: {
-    getProducts() {
-      this.$axios.get('/products').then(({ data }) => {
-        this.products = data.products
-      })
+
+  computed: {
+    isLoggedIn () {
+      return this.$store.getters["user/isLoggedIn"]
     },
-    setCurrentProduct(product: Product) {
-      if (!this.$store.state.user.isLoggedIn) {
+    user() {
+      return this.$store.getters["user/user"]
+    }
+  },
+
+  methods: {
+    setCurrentProduct(product: IProduct) {
+      if (!this.isLoggedIn) {
         this.$toast.error('You must be logged in to review products')
         this.$router.push('/signin')
         return
       }
       this.currentProduct = product
+      this.showReviewModal = true
     },
     publishReview() {
-      const { user } = this.$store.state.user
-      if (!user) {
+      if (!this.isLoggedIn) {
         return this.$router.push('/signin')
       }
-      this.$axios
-        .post(
-          '/reviews',
-          {
-            productId: this.currentProduct?.id,
-            stars: this.review.stars,
-            comment: this.review.comment,
-          },
-          {
-            headers: {
-              authorization: user.token,
-            },
+      this.$productService.CreateReview({
+        productId: this.currentProduct?.id || 0,
+        stars: this.review.stars,
+        comment: this.review.comment
+      }, this.user.token).then((data) => {
+          if (data.success) {
+            this.$toast.success(data.message)
+            this.$fetch()
+            this.showReviewModal = false
+            this.review.stars = 0
+            this.review.comment = ""
           }
-        )
-        .then(() => {
-          this.$toast.success('Review added')
-          this.getProducts()
-          const btn = this.$refs.CloseReview as HTMLButtonElement
-          btn?.click()
-        })
-    },
-    createProduct() {
-      const { user } = this.$store.state.user
 
-      if (!user) {
-        return this.$router.push('/signin')
-      }
-      this.$axios
-        .post(
-          '/products',
-          {
-            name: this.newProduct.name,
-            price: this.newProduct.price,
-            vendor: this.newProduct.vendor,
-          },
-          {
-            headers: {
-              authorization: user.token,
-            },
-          }
-        )
-        .then(() => {
-          this.$toast.success('Product added')
-          this.getProducts()
-          const btn = this.$refs.CloseAddProduct as HTMLButtonElement
-          btn?.click()
-        })
+        }).catch(err => {
+        if (err.response.data?.errors?.length) {
+          this.$toast.error(err.response.data.message || "Error Occurred!")
+          const errors: {[x:string]: string} = {}
+          err.response.data.errors.forEach((error: IBackendError) => {
+            errors[error.param] = error.msg
+          })
+          this.reviewErrors = errors
+        } else {
+          this.$toast.error(err.response.data.message || "Error Occurred!")
+        }
+      })
     },
   },
 })
 </script>
 
-<style scope lang="scss">
+<style lang="scss">
 $active-color: #f3d23e;
 
 .star.active {

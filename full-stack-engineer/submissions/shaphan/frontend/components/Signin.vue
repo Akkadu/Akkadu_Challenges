@@ -42,7 +42,6 @@
             <div class="d-grid mb-4">
               <button
                 class="btn btn-primary btn"
-                asp-page-handler="Register"
                 type="submit"
               >
                 Signin
@@ -82,7 +81,9 @@ export default Vue.extend({
         return
       }
 
-      this.$store.commit('user/setUser', { id, name, token })
+      this.$store.dispatch('user/setUser', {
+        id, name, token
+      })
     },
 
     async submit() {

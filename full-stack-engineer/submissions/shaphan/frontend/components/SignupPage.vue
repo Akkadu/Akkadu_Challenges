@@ -70,7 +70,6 @@
             <div class="d-grid mb-4">
               <button
                 class="btn btn-primary btn"
-                asp-page-handler="Register"
                 type="submit"
               >
                 Sign up

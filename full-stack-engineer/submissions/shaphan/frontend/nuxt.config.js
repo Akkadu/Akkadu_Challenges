@@ -1,20 +1,20 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: 'server',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Product Review',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' },
+      { name: 'format-detection', content: 'telephone=no' }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -25,8 +25,11 @@ export default {
     {
       src: '~/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
       mode: 'client',
-      extensions: ['.js'],
+      extensions: ['.js']
     },
+    {
+      src: '~/plugins/services'
+    }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -42,9 +45,9 @@ export default {
         component: 'fa',
         suffix: true,
         solid: true,
-        regular: true,
-      },
-    ],
+        regular: true
+      }
+    ]
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -52,24 +55,28 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/toast',
-    '@nuxtjs/fontawesome',
+    '@nuxtjs/fontawesome'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: process.env.PUBLIC_API_URL,
+    baseURL: process.env.PUBLIC_API_URL
   },
   fontawesome: {
     icons: {
       solid: ['faStar', 'faTrash', 'faPen'],
-      regular: ['faStar'],
-    },
+      regular: ['faStar']
+    }
   },
   toast: {
     position: 'top-center',
-    duration: 2000,
+    duration: 2000
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+  loading: {
+    color: '#00bfff',
+    height: '5px'
+  }
 }

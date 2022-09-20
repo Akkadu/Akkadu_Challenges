@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Navbar />
     <div class="container">
       <div class="card p-3 mt-4">
         <div class="d-flex justify-content-between align-items-center">
@@ -66,7 +65,7 @@
             </div>
             <p class="mb-1">{{ rev.comment }}</p>
             <div
-              v-if="Number(rev?.User?.id || 0) == Number(user?.id)"
+              v-if="Number(rev?.User?.id || 0) === Number(user?.id)"
               class="d-flex"
             >
               <button
@@ -90,18 +89,7 @@
     </div>
 
     <!-- Modal -->
-    <div
-      id="addReviewModal"
-      class="modal fade"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="Add review"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
+    <Modal :show="showReviewModal" show-close @close="showReviewModal = false">
             <div class="mt-2 mr-4">
               <h1 class="main-heading mt-0">Review the product</h1>
               <div class="row mt-4">
@@ -135,10 +123,9 @@
                 <div>
                   <div class="modal-footer border-top-0">
                     <button
-                      ref="CloseReview"
                       type="button"
                       class="btn btn-light"
-                      data-bs-dismiss="modal"
+                      @click="showReviewModal = false"
                     >
                       Cancel
                     </button>
@@ -153,57 +140,31 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </Modal>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import Navbar from './Navbar.vue'
-
-interface Review {
-  id: number
-  stars: number
-  comment: string
-  User?: {
-    id: number
-    fullName: string
-  }
-}
-
-interface Product {
-  id: number
-  name: string
-  price: number
-  vendor: string
-  averageStars: number
-  reviewsCount: number
-  reviews: Review[]
-}
+import {IReview} from "~/types/review.types";
+import {IBackendError, IProduct} from "~/services/types";
 
 interface ComponentData {
-  product: Product | null
+  product: IProduct | null
   review: {
     stars: number
     comment: string
     id: number
   }
-  user: {
-    id: number
-    fullName: string
-    token: string
-  } | null
-
-  currentReview: Review | null
-  isLoggedIn: boolean
+  currentReview: IReview | null
+  showReviewModal: boolean
+  reviewErrors: {
+    [x: string]: string
+  }
 }
 
 export default Vue.extend({
-  name: 'ProductsPage',
-  components: { Navbar },
+  name: 'ReviewsPage',
   props: {
     maxStars: {
       type: Number,
@@ -213,72 +174,82 @@ export default Vue.extend({
   data(): ComponentData {
     return {
       product: null,
+      reviewErrors: {
+        comment: '',
+        stars: ''
+      },
       review: {
         id: 0,
         stars: 0,
         comment: '',
       },
-      user: null,
       currentReview: null,
-      isLoggedIn: false,
+      showReviewModal: false
     }
   },
-  mounted() {
+  async fetch() {
     const productId = this.$route.params.id
-    this.$store.commit('user/logOnUser')
-    const { user } = this.$store.state.user
-    this.isLoggedIn = this.$store.state.isLoggedIn
-    this.user = user
-    this.getProductReviews(Number(productId))
+    const res = await this.$productService.GetProductReviews(Number(productId))
+    this.product = res.product
+  },
+  computed: {
+    isLoggedIn () {
+      return this.$store.getters["user/isLoggedIn"]
+    },
+    user() {
+      return this.$store.getters["user/user"]
+    }
   },
   methods: {
-    getProductReviews(id: number) {
-      this.$axios.get(`/products/${id}/reviews`).then(({ data }) => {
-        this.product = data.product
-      })
-    },
-    publishReview() {
-      const { user } = this.$store.state.user
+    publishReview(): void {
 
-      if (!user) {
-        return this.$router.push('/signin')
+      if (!this.isLoggedIn) {
+        this.$router.push('/signin')
+        return
       }
-      this.$axios
-        .put(
-          `/reviews/${this.review.id}`,
-          {
-            productId: this.product?.id,
-            stars: this.review.stars,
-            comment: this.review.comment,
-          },
-          {
-            headers: {
-              authorization: user.token,
-            },
-          }
-        )
-        .then(() => {
-          this.$toast.success('Review updated')
-          this.getProductReviews(this.product?.id || 0)
-          const btn = this.$refs.CloseReview as HTMLButtonElement
-          btn?.click()
-        })
+      this.$productService.EditReview({
+          reviewId: this.review.id,
+          stars: this.review.stars,
+          productId: this.product?.id || 0,
+          comment: this.review.comment
+        }, this.user.token)
+        .then((data) => {
+          this.$toast.success(data.message)
+          this.$fetch()
+          this.showReviewModal = false
+          this.review.comment = ""
+          this.review.stars = 0
+        }).catch(err => {
+        if (err.response.data?.errors?.length) {
+          this.$toast.error(err.response.data.message || "Error Occurred!")
+          const errors: {[x:string]: string} = {}
+          err.response.data.errors.forEach((error: IBackendError) => {
+            errors[error.param] = error.msg
+          })
+          this.reviewErrors = errors
+        } else {
+          this.$toast.error(err.response.data.message || "Error Occurred!")
+        }
+      })
     },
     deleteReview(id: number) {
-      this.$axios.delete(`/reviews/${id}`).then(() => {
+      this.$productService.DeleteReview(id, this.user.token).then(() => {
         this.$toast.success('Review deleted')
-        this.getProductReviews(this.product?.id || 0)
+        this.$fetch()
+      }).catch(err => {
+        this.$toast.error(err.response.data.message || "Error Occurred!")
       })
     },
 
-    setCurrentReview(review: Review) {
+    setCurrentReview(review: IReview) {
       this.review = review
+      this.showReviewModal = true
     },
   },
 })
 </script>
 
-<style scope lang="scss">
+<style lang="scss">
 $active-color: #f3d23e;
 
 .star.active {

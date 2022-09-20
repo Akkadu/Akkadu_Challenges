@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Market Place</a>
+      <nuxt-link class="navbar-brand" to="/">Market Place</nuxt-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -22,7 +22,7 @@
           </li>
           <li class="nav-item">
             <a
-              v-if="user != null"
+              v-if="isLoggedIn"
               class="nav-link active"
               aria-current="page"
               style="cursor: pointer"
@@ -30,7 +30,7 @@
               >Sign out</a
             >
             <nuxt-link
-              v-if="user == null"
+              v-if="!isLoggedIn"
               class="nav-link active"
               aria-current="page"
               to="signin"
@@ -46,31 +46,19 @@
 <script lang="ts">
 import Vue from 'vue'
 
-interface User {
-  id: number
-  fullName: string
-  token: string
-}
-
-interface ComponentData {
-  user: User | null
-}
-
 export default Vue.extend({
   name: 'NavBar',
-  data(): ComponentData {
-    return {
-      user: null,
+  computed: {
+    isLoggedIn () {
+      return this.$store.getters["user/isLoggedIn"]
     }
   },
   mounted() {
-    this.$store.commit('user/logOnUser')
-    const { user } = this.$store.state.user
-    this.user = user
+    this.$store.dispatch("user/logOn")
   },
   methods: {
     signOut() {
-      this.$store.commit('user/logOutUser')
+      this.$store.dispatch("user/logOut")
       return this.$router.push('/signin')
     },
   },

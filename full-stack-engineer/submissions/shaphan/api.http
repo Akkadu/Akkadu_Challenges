@@ -1,0 +1,60 @@
+# Create a new user
+POST http://localhost:5000/signup
+Content-Type: application/json
+
+{
+    "fullName": "Shaphan Nzabonimana",
+    "username": "shaphan",
+    "password": "12345678",
+    "confirmPassword": "12345678"
+}
+
+###
+
+# Sign In
+POST http://localhost:5000/signin
+Content-Type: application/json
+
+{
+    "username": "shaphan",
+    "password": "12345678"
+}
+
+###
+
+# Create product
+POST http://localhost:5000/products
+Content-Type: application/json
+Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJzaGFwaGFuIiwiaWF0IjoxNjYxNTMyMTk0LCJleHAiOjE2NjE2MTg1OTR9.bv67Tjt78PbF5FlGvpnA0mGq8TrLDV-QkpRz2oXkJsg"
+
+{
+    "name": "Macbook Pro",
+    "price": 1000,
+    "vendor": "Apple"
+}
+
+###
+
+# Get all products
+GET http://localhost:5000/products
+Content-Type: application/json
+
+###
+
+# Add review
+POST http://localhost:5000/reviews
+Content-Type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJzaGFwaGFuIiwiaWF0IjoxNjYxNTMyMTk0LCJleHAiOjE2NjE2MTg1OTR9.bv67Tjt78PbF5FlGvpnA0mGq8TrLDV-QkpRz2oXkJsg
+
+{
+    "productId": 1,
+    "comment": "This is a great product",
+    "stars": 1
+}
+
+###
+
+# Get product reviews
+GET http://localhost:5000/products/1/reviews
+Content-Type: application/json
+
